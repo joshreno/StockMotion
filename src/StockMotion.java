@@ -22,7 +22,6 @@ public class StockMotion extends Application{
         stockEndDate = new Date();
         controller = new Controller();
         listener = new MotionListener();
-
     }
 
     public static void main(String[] args) {
