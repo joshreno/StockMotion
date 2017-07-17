@@ -1,4 +1,4 @@
-package joshuareno/Desktop/projects/StockMotion/src;
+package src;
 /**
  * Created by joshuareno on 7/16/17.
  */
