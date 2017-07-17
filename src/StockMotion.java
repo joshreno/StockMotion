@@ -13,13 +13,16 @@ import javafx.scene.Scene;
 
 public class StockMotion extends Application{
     private Controller controller;
-    private MotionListener listener = new MotionListener();
+    private MotionListener listener;
     private Date stockStartDate;
     private Date stockEndDate;
 
     public void start(Stage primaryStage) {
         stockStartDate = new Date();
         stockEndDate = new Date();
+        controller = new Controller();
+        listener = new MotionListener();
+
     }
 
     public static void main(String[] args) {
