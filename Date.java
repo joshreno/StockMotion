@@ -18,10 +18,9 @@ public class Date {
 
     /**
      * Sets the day
-     * @param day
     */
     public Date() {
-        this(0, 0, Month.JANUARY);
+        this(0, 0, Month.UNKNOWN);
     }
 
     /**

@@ -1,4 +1,6 @@
 // import leap motion
+import com.leapmotion.leap.*;
+import com.leapmotion.leap.Gesture.State;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
