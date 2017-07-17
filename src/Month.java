@@ -1,3 +1,7 @@
+package joshuareno/Desktop/projects/StockMotion/src;
+/**
+ * Created by joshuareno on 7/16/17.
+ */
 public enum Month {
     JANUARY,
     FEBRUARY,

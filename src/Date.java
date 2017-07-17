@@ -1,4 +1,9 @@
 // import the current day
+/**
+ * Created by joshuareno on 7/16/17.
+ */
+package src;
+
 public class Date {
     private Month month;
     private int day;
