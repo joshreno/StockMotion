@@ -1,19 +1,18 @@
 package src;
-import java.util.HashMap;
-import java.sql.Timestamp;
-import java.time.Instant;
-import static java.lang.Math.toIntExact;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URL;
-import java.net.MalformedURLException;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
+import java.net.MalformedURLException;
+import java.time.Instant;
+import java.io.IOException;
+import static java.lang.Math.toIntExact;
+import java.sql.Timestamp;
+import java.net.URL;
 /**
  * Created by joshuareno on 7/17/17.
  */
-
 public class Stock {
     private String address;
     private double high;
@@ -31,7 +30,6 @@ public class Stock {
     private double week52High;
     private double week52Low;
     private double yield;
-
 
     public Stock(String symbol) throws MalformedURLException{
         this.symbol = symbol;

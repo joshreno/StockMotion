@@ -1,24 +1,50 @@
 package src;
-import javafx.scene.layout.VBox;
+
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+
 /**
  * Created by joshuareno on 7/17/17.
  */
+
 public class StockInformation {
-    private Stock stock;
-    private double high;
-    private double low;
-    private double open;
-    private double marketCap;
-    private double value;
-    private double volume;
-    private double week52High;
-    private double week52Low;
-    private double yield;
-    private VBox vbox = new VBox();
+    private static Stock stock;
+    private static double high;
+    private static double low;
+    private static double open;
+    private static double marketCap;
+    private static double value;
+    private static double volume;
+    private static double week52High;
+    private static double week52Low;
+    private static double yield;
+    private static VBox vbox = new VBox();
 
+    /**
+     * Constructor sets the information for a particular stock
+     * @param stock
+    */
     public StockInformation(Stock stock) {
-        this.stock = stock;
+        if (stock != null) {
+            this.stock = stock;
+            high = stock.getHigh();
+            low = stock.getLow();
+            open = stock.getOpen();
+            marketCap = stock.getMarketCap();
+            value = stock.getValue();
+            volume = stock.getVolume();
+            week52High = stock.getWeek52High();
+            week52Low = stock.getWeek52Low();
+            yield = stock.getYield();
+        }
+    }
+
+    /**
+    * Changes the stock and updates the instance variables
+    * @param stock
+    */
+    public static void setStockInformation(Stock stock) {
+        StockInformation.stock = stock;
         high = stock.getHigh();
         low = stock.getLow();
         open = stock.getOpen();
@@ -30,7 +56,10 @@ public class StockInformation {
         yield = stock.getYield();
     }
 
-    public void update() {
+    /**
+    * Updates the instance variables
+    */
+    public static void update() {
         high = stock.getHigh();
         low = stock.getLow();
         open = stock.getOpen();
@@ -42,7 +71,11 @@ public class StockInformation {
         yield = stock.getYield();
     }
 
-    public VBox getRootNode() {
+    /**
+    * Returns the root node containing the stock's information
+    * @return VBox
+    */
+    public static VBox getRootNode() {
         update();
         vbox.getChildren().clear();
         Label highLabel = new Label("High: " + high);

@@ -1,17 +1,16 @@
-/**
- * Created by joshuareno on 7/17/17.
- */
 package src;
 
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.State;
+/**
+ * Created by joshuareno on 7/17/17.
+ */
 
 public class MotionListener extends Listener{
     private String initString;
     private String connectString;
     private String disconnectString;
     private String exitString;
-
 
     public void onInit(Controller controller) {
         initString = "initialized";
