@@ -3,15 +3,12 @@ package src;
 import java.util.ArrayList;
 import javafx.scene.chart.AreaChart;
 import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.io.InputStreamReader;
 import java.time.Instant;
 import java.io.IOException;
+import java.lang.Math;
 import javafx.scene.chart.NumberAxis;
-import static java.lang.Math.toIntExact;
-import java.sql.Timestamp;
 import java.net.URL;
 import java.net.URLConnection;
 import javafx.scene.chart.XYChart;
@@ -24,12 +21,14 @@ public class Stock {
     private AreaChart areaChart;
     private ArrayList<ArrayList<String>> arrayOfData;
     private BufferedReader buff;
+    private boolean positive;
+    private double close;
     private double high;
     private InputStreamReader inStream;
     private double low;
     private double open;
-    private double marketCap;
-    private int marketCapChange;
+    // private double marketCap;
+    // private int marketCapChange;
     private double percentChange;
     private String symbol;
     private URL url;
@@ -37,7 +36,7 @@ public class Stock {
     private double value;
     private double valueChange;
     private HashMap<Date, Integer> valueOverTime;
-    private double volume;
+    private int volume;
     private double week52High;
     private double week52Low;
     private NumberAxis xAxis = new NumberAxis();
@@ -48,7 +47,7 @@ public class Stock {
         this.symbol = symbol;
         long time1 = Instant.now().getEpochSecond();
         int unixDate1 = 0;
-        int unixDate2 = toIntExact(time1);
+        int unixDate2 = Math.toIntExact(time1);
         address = "https://query1.finance.yahoo.com/v7/finance/download/^"
                 + symbol +  "?period1=" + Integer.toString(unixDate1) + "&period2="
                 + Integer.toString(unixDate2) + "&interval=1d&events=history&crumb=aDdGQcp1f2A";
@@ -62,7 +61,14 @@ public class Stock {
         while ((buffLine = buff.readLine()) != null) {
             arrayOfData.add(CSVtoArrayList(buffLine));
         }
-        
+        setData();
+        for (ArrayList<String> array : arrayOfData) {
+            Date date = convertStringToDate(array.get(0));
+            String string = array.get(5);
+            //double value = array.get();
+            // add to hashmap
+
+        }
     }
 
     public ArrayList<String> CSVtoArrayList(String csv) {
@@ -82,6 +88,24 @@ public class Stock {
         return areaChart;
     }
 
+    public void setData() {
+        open = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 1).get(1));
+        high = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 1).get(2));
+        low = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 1).get(3));
+        close = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 1).get(4));
+        value = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 1).get(5));
+        volume = Integer.parseInt(arrayOfData.get(arrayOfData.size() - 1).get(6));
+
+        double yesterdayValue = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 2).get(5));
+        percentChange = 100 * (value - yesterdayValue) / (yesterdayValue);
+        if (percentChange > 0) {
+            positive = true;
+        } else if (percentChange <= 0) {
+            positive = false;
+        }
+    }
+
+
     public Double getHigh() {
         return high;
     }
@@ -94,15 +118,19 @@ public class Stock {
         return open;
     }
 
-    public double getMarketCap() {
-        return marketCap;
+    public Double getClose() {
+        return close;
     }
+
+//    public double getMarketCap() {
+//        return marketCap;
+//    }
 
     public double getValue() {
         return value;
     }
 
-    public double getVolume() {
+    public int getVolume() {
         return volume;
     }
 
@@ -120,6 +148,10 @@ public class Stock {
 
     public String getSymbol() {
         return symbol;
+    }
+
+    public boolean getChange() {
+        return positive;
     }
 
     public Date convertStringToDate(String string) {
