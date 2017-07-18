@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d28505b-8175-40b2-8095-873914b40858" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Month.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Date.java" afterPath="$PROJECT_DIR$/src/Date.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Stock.java" afterPath="$PROJECT_DIR$/src/Stock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StockMenu.java" afterPath="$PROJECT_DIR$/src/StockMenu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StockScreen.java" afterPath="$PROJECT_DIR$/src/StockScreen.java" />
     </list>
     <ignored path="StockMotion.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,8 +65,8 @@
       <file leaf-file-name="Date.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Date.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="375">
+              <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
               <folding>
                 <element signature="e#444#445#0" expanded="true" />
                 <element signature="e#476#477#0" expanded="true" />
@@ -713,8 +708,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Date.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        <state relative-caret-position="375">
+          <caret line="25" column="7" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
           <folding>
             <element signature="e#444#445#0" expanded="true" />
             <element signature="e#476#477#0" expanded="true" />
