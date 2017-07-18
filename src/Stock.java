@@ -1,5 +1,6 @@
 package src;
 
+import java.util.ArrayList;
 import javafx.scene.chart.AreaChart;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -21,6 +22,7 @@ import javafx.scene.chart.XYChart;
 public class Stock {
     private String address;
     private AreaChart areaChart;
+    private ArrayList<ArrayList<String>> arrayOfData;
     private BufferedReader buff;
     private double high;
     private InputStreamReader inStream;
@@ -53,9 +55,27 @@ public class Stock {
         url = new URL(address);
         urlConnection = url.openConnection();
         inStream = new InputStreamReader(urlConnection.getInputStream());
+
+        arrayOfData = new ArrayList<ArrayList<String>>();
+        String buffLine;
         buff = new BufferedReader(inStream);
+        while ((buffLine = buff.readLine()) != null) {
+            arrayOfData.add(CSVtoArrayList(buffLine));
+        }
+        
+    }
 
-
+    public ArrayList<String> CSVtoArrayList(String csv) {
+        ArrayList<String> result = new ArrayList<String>();
+        if (csv != null) {
+            String[] splitData = csv.split("\\s*,\\s*");
+            for (int i = 0; i < splitData.length; i++) {
+                if (!(splitData[i] == null) || !(splitData[i].length() == 0)) {
+                    result.add(splitData[i].trim());
+                }
+            }
+        }
+        return result;
     }
 
     public AreaChart<Number, Number> getAreaChart() {
@@ -100,5 +120,14 @@ public class Stock {
 
     public String getSymbol() {
         return symbol;
+    }
+
+    public Date convertStringToDate(String string) {
+        String year = string.substring(0, 4);
+        String month = string.substring(5, 7);
+        String day = string.substring(8, string.length());
+        Date date = new Date(Integer.parseInt(day),
+                Integer.parseInt(year), Integer.parseInt(month));
+        return date;
     }
 }
