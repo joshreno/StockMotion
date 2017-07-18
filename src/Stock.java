@@ -1,5 +1,6 @@
 package src;
 
+import javafx.scene.chart.AreaChart;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
@@ -7,16 +8,19 @@ import java.util.HashMap;
 import java.io.InputStreamReader;
 import java.time.Instant;
 import java.io.IOException;
+import javafx.scene.chart.NumberAxis;
 import static java.lang.Math.toIntExact;
 import java.sql.Timestamp;
 import java.net.URL;
 import java.net.URLConnection;
+import javafx.scene.chart.XYChart;
 
 /**
  * Created by joshuareno on 7/17/17.
  */
 public class Stock {
     private String address;
+    private AreaChart areaChart;
     private BufferedReader buff;
     private double high;
     private InputStreamReader inStream;
@@ -34,6 +38,8 @@ public class Stock {
     private double volume;
     private double week52High;
     private double week52Low;
+    private NumberAxis xAxis = new NumberAxis();
+    private NumberAxis yAxis = new NumberAxis();
     private double yield;
 
     public Stock(String symbol) throws IOException{
@@ -49,6 +55,11 @@ public class Stock {
         inStream = new InputStreamReader(urlConnection.getInputStream());
         buff = new BufferedReader(inStream);
 
+
+    }
+
+    public AreaChart<Number, Number> getAreaChart() {
+        return areaChart;
     }
 
     public Double getHigh() {

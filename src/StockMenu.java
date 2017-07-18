@@ -78,6 +78,7 @@ public class StockMenu {
                         StockInformation.setStockInformation(stock);
                         StockInformation.update();
                         StockMotion.getStockScreen().update();
+                        StockScreen.setStock(stock);
                     }
                 }
             });

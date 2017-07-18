@@ -5,7 +5,7 @@ package src;
  */
 
 public class Date {
-    private Month month;
+    private int month;
     private int day;
     private int year;
 
@@ -15,7 +15,7 @@ public class Date {
      * @param year
      * @param month
      */
-    public Date(int day, int year, Month month) {
+    public Date(int day, int year, int month) {
         this.day = day;
         this.year = year;
         this.month = month;
@@ -25,7 +25,7 @@ public class Date {
      * Sets the day
      */
     public Date() {
-        this(0, 0, Month.UNKNOWN);
+        this(1, 1970, 1);
     }
 
     /**
@@ -64,7 +64,7 @@ public class Date {
      * Sets the month
      * @param month
      */
-    public void setMonth(Month month) {
+    public void setMonth(int month) {
         this.month = month;
     }
 
@@ -72,7 +72,7 @@ public class Date {
      * Returns the month
      * @return month
      */
-    public Month getMonth() {
+    public int getMonth() {
         return month;
     }
 
@@ -82,9 +82,22 @@ public class Date {
      * @param year
      * @param month
      */
-    public void setDate(int day, int year, Month month) {
+    public void setDate(int day, int year, int month) {
         this.day = day;
         this.year = year;
         this.month = month;
+    }
+
+    public String toString() {
+        String day = "";
+        String month = "";
+        if (this.day < 10) {
+            day = "0" + this.day;
+        }
+        if (this.month < 10) {
+            month = "0" + this.month;
+        }
+        return day + "/" + month + "/" + year;
+
     }
 }

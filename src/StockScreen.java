@@ -1,5 +1,10 @@
 package src;
 
+import javafx.scene.Scene;
+import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.XYChart;
+
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -9,6 +14,7 @@ import javafx.scene.layout.VBox;
  */
 
 public class StockScreen extends BorderPane{
+    private static Stock stock;
     private static VBox vboxList = new VBox();
     private static StockMenu stockMenu = new StockMenu();
     private static VBox vboxInfo = new VBox();
@@ -41,5 +47,13 @@ public class StockScreen extends BorderPane{
         hbox.getChildren().clear();
         hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());
         this.setTop(hbox);
+    }
+
+    public static void setStock(Stock stock) {
+        StockScreen.stock = stock;
+    }
+
+    public static Stock getStock() {
+        return stock;
     }
 }
