@@ -19,9 +19,9 @@ public class StockMotion extends Application{
     private Date stockEndDate;
 
     /**
-    * Starts the application
-    * @param primaryStage
-    */
+     * Starts the application
+     * @param primaryStage
+     */
     public void start(Stage primaryStage) {
         stockStartDate = new Date();
         stockEndDate = new Date();
@@ -30,9 +30,9 @@ public class StockMotion extends Application{
     }
 
     /**
-    * Returns the StockScreen variable
-    * @return StockScreen
-    */
+     * Returns the StockScreen variable
+     * @return StockScreen
+     */
     public static StockScreen getStockScreen() {
         return stockScreen;
     }

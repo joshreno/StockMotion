@@ -17,8 +17,8 @@ public class StockScreen extends BorderPane{
     private static StockMenu exchangesMenu = new StockMenu();
 
     /**
-    * Constructor sets the BorderPane nodes
-    */
+     * Constructor sets the BorderPane nodes
+     */
     public StockScreen() {
         vboxList.getChildren().addAll(stockMenu.getListOfStocks());
         vboxInfo.getChildren().addAll(info.getRootNode());
@@ -29,8 +29,8 @@ public class StockScreen extends BorderPane{
     }
 
     /**
-    * Updates the BorderPane nodes
-    */
+     * Updates the BorderPane nodes
+     */
     public void update() {
         vboxList.getChildren().clear();
         vboxList.getChildren().addAll(stockMenu.getListOfStocks());

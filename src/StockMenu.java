@@ -1,9 +1,9 @@
 package src;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
-import java.net.MalformedURLException;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 
@@ -18,13 +18,12 @@ public class StockMenu {
     private HBox hbox = new HBox(0);
 
     /**
-     *
-     * @throws MalformedURLException
+     * Adds the stock to the list
      * @param symbol
      * @param startDate
      * @param endDate
      */
-    private void addStock(String symbol, Date startDate, Date endDate) throws MalformedURLException{
+    private void addStock(String symbol, Date startDate, Date endDate) throws IOException{
         for (Stock stock : listOfStocks) {
             if (stock.getSymbol().equals(symbol)) {
                 return;
@@ -39,7 +38,7 @@ public class StockMenu {
     /**
      * Deletes the stock from the list
      * @param symbol
-    */
+     */
     private void deleteStock(String symbol) {
         for (Stock stock : listOfStocks) {
             if (stock.getSymbol().equals(symbol)) {

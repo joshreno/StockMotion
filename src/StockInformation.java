@@ -23,7 +23,7 @@ public class StockInformation {
     /**
      * Constructor sets the information for a particular stock
      * @param stock
-    */
+     */
     public StockInformation(Stock stock) {
         if (stock != null) {
             this.stock = stock;
@@ -40,9 +40,9 @@ public class StockInformation {
     }
 
     /**
-    * Changes the stock and updates the instance variables
-    * @param stock
-    */
+     * Changes the stock and updates the instance variables
+     * @param stock
+     */
     public static void setStockInformation(Stock stock) {
         StockInformation.stock = stock;
         high = stock.getHigh();
@@ -57,8 +57,8 @@ public class StockInformation {
     }
 
     /**
-    * Updates the instance variables
-    */
+     * Updates the instance variables
+     */
     public static void update() {
         high = stock.getHigh();
         low = stock.getLow();
@@ -72,9 +72,9 @@ public class StockInformation {
     }
 
     /**
-    * Returns the root node containing the stock's information
-    * @return VBox
-    */
+     * Returns the root node containing the stock's information
+     * @return VBox
+     */
     public static VBox getRootNode() {
         update();
         vbox.getChildren().clear();

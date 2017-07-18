@@ -4,18 +4,22 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.util.HashMap;
-import java.net.MalformedURLException;
+import java.io.InputStreamReader;
 import java.time.Instant;
 import java.io.IOException;
 import static java.lang.Math.toIntExact;
 import java.sql.Timestamp;
 import java.net.URL;
+import java.net.URLConnection;
+
 /**
  * Created by joshuareno on 7/17/17.
  */
 public class Stock {
     private String address;
+    private BufferedReader buff;
     private double high;
+    private InputStreamReader inStream;
     private double low;
     private double open;
     private double marketCap;
@@ -23,6 +27,7 @@ public class Stock {
     private double percentChange;
     private String symbol;
     private URL url;
+    private URLConnection urlConnection;
     private double value;
     private double valueChange;
     private HashMap<Date, Integer> valueOverTime;
@@ -31,7 +36,7 @@ public class Stock {
     private double week52Low;
     private double yield;
 
-    public Stock(String symbol) throws MalformedURLException{
+    public Stock(String symbol) throws IOException{
         this.symbol = symbol;
         long time1 = Instant.now().getEpochSecond();
         int unixDate1 = 0;
@@ -40,6 +45,10 @@ public class Stock {
                 + symbol +  "?period1=" + Integer.toString(unixDate1) + "&period2="
                 + Integer.toString(unixDate2) + "&interval=1d&events=history&crumb=aDdGQcp1f2A";
         url = new URL(address);
+        urlConnection = url.openConnection();
+        inStream = new InputStreamReader(urlConnection.getInputStream());
+        buff = new BufferedReader(inStream);
+
     }
 
     public Double getHigh() {

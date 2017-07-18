@@ -14,7 +14,7 @@ public class Date {
      * @param day
      * @param year
      * @param month
-    */
+     */
     public Date(int day, int year, Month month) {
         this.day = day;
         this.year = year;
@@ -23,7 +23,7 @@ public class Date {
 
     /**
      * Sets the day
-    */
+     */
     public Date() {
         this(0, 0, Month.UNKNOWN);
     }
@@ -31,7 +31,7 @@ public class Date {
     /**
      * Sets the day
      * @param day
-    */
+     */
     public void setDay(int day) {
         this.day = day;
     }
@@ -39,7 +39,7 @@ public class Date {
     /**
      * Returns the day
      * @return day
-    */
+     */
     public int getDay() {
         return day;
     }
@@ -47,7 +47,7 @@ public class Date {
     /**
      * Sets the year
      * @param year
-    */
+     */
     public void setYear(int year) {
         this.year = year;
     }
@@ -55,7 +55,7 @@ public class Date {
     /**
      * Returns the year
      * @return year
-    */
+     */
     public int getYear() {
         return year;
     }
@@ -63,7 +63,7 @@ public class Date {
     /**
      * Sets the month
      * @param month
-    */
+     */
     public void setMonth(Month month) {
         this.month = month;
     }
@@ -71,7 +71,7 @@ public class Date {
     /**
      * Returns the month
      * @return month
-    */
+     */
     public Month getMonth() {
         return month;
     }
@@ -81,7 +81,7 @@ public class Date {
      * @param day
      * @param year
      * @param month
-    */
+     */
     public void setDate(int day, int year, Month month) {
         this.day = day;
         this.year = year;
