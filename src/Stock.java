@@ -30,6 +30,7 @@ public class Stock {
     // private double marketCap;
     // private int marketCapChange;
     private double percentChange;
+    XYChart.Series series;
     private String symbol;
     private URL url;
     private URLConnection urlConnection;
@@ -62,13 +63,14 @@ public class Stock {
             arrayOfData.add(CSVtoArrayList(buffLine));
         }
         setData();
+        series = new XYChart.Series();
+        series.setName(symbol);
         for (ArrayList<String> array : arrayOfData) {
             Date date = convertStringToDate(array.get(0));
-            String string = array.get(5);
-            //double value = array.get();
-            // add to hashmap
-
+            int dailyValue = Integer.parseInt(array.get(5));
+            series.getData().add(new XYChart.Data(date, dailyValue));
         }
+        areaChart.getData().addAll(series);
     }
 
     public ArrayList<String> CSVtoArrayList(String csv) {
