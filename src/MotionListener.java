@@ -8,48 +8,43 @@ import com.leapmotion.leap.Gesture.State;
  */
 
 public class MotionListener extends Listener{
-    private String initString = "Initialized";
-    private String connectString = "Connected";
-    private String disconnectString = "Disconnected";
-    private String exitString = "Exited";
-
-    private String string;
+    private LeapStatus status;
 
     public void onInit(Controller controller) {
-        string = initString;
+        setInitString();
     }
 
     public void onConnect(Controller controller) {
-        string = connectString;
+        setConnectString();
     }
 
     public void onDisconnect(Controller controller) {
-        string = disconnectString;
+        setDisconnectString();
     }
 
     public void onExit(Controller controller) {
-        string = exitString;
+        setExitString();
     }
 
     public void onFrame(Controller controller) {}
 
     public void setInitString() {
-        string = initString;
+        status = LeapStatus.INITIALIZED;
     }
 
-    public void setConnectString(String connectString) {
-        string = connectString;
+    public void setConnectString() {
+        status = LeapStatus.CONNECTED;
     }
 
-    public void setDisconnectString(String disconnectString) {
-        string = disconnectString;
+    public void setDisconnectString() {
+        status = LeapStatus.DISCONNECTED;
     }
 
-    public void setExitString(String exitString) {
-        string = exitString;
+    public void setExitString() {
+        status = LeapStatus.EXITED;
     }
 
-    public String getString() {
-        return string;
+    public LeapStatus getStatus() {
+        return status;
     }
 }
