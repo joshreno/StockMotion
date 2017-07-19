@@ -21,7 +21,6 @@ public class Stock {
     private static AreaChart areaChart;
     private static ArrayList<ArrayList<String>> arrayOfData;
     private static BufferedReader buff;
-
     private static double close;
     private static double high;
     private static InputStreamReader inStream;
@@ -40,8 +39,8 @@ public class Stock {
     private double valueChange;
     private HashMap<Date, Integer> valueOverTime;
     private static int volume;
-    private double week52High;
-    private double week52Low;
+    //private double week52High;
+    //private double week52Low;
     private NumberAxis xAxis = new NumberAxis();
     private NumberAxis yAxis = new NumberAxis();
     private double yield;
@@ -167,13 +166,13 @@ public class Stock {
         return volume;
     }
 
-    public double getWeek52High() {
-        return week52High;
-    }
+//    public double getWeek52High() {
+//        return week52High;
+//    }
 
-    public double getWeek52Low() {
-        return week52Low;
-    }
+//    public double getWeek52Low() {
+//        return week52Low;
+//    }
 
     public double getYield() {
         return yield;
