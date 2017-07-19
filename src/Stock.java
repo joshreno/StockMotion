@@ -17,27 +17,29 @@ import javafx.scene.chart.XYChart;
  * Created by joshuareno on 7/17/17.
  */
 public class Stock {
-    private String address;
-    private AreaChart areaChart;
-    private ArrayList<ArrayList<String>> arrayOfData;
-    private BufferedReader buff;
-    private boolean positive;
-    private double close;
-    private double high;
-    private InputStreamReader inStream;
-    private double low;
-    private double open;
+    private static String address;
+    private static AreaChart areaChart;
+    private static ArrayList<ArrayList<String>> arrayOfData;
+    private static BufferedReader buff;
+
+    private static double close;
+    private static double high;
+    private static InputStreamReader inStream;
+    private static double low;
+    private static double open;
     // private double marketCap;
     // private int marketCapChange;
-    private double percentChange;
-    XYChart.Series series;
-    private String symbol;
-    private URL url;
-    private URLConnection urlConnection;
-    private double value;
+    private static boolean positive;
+    private static double percentChange;
+    private static XYChart.Series series;
+    private static String symbol;
+    private static long time;
+    private static URL url;
+    private static URLConnection urlConnection;
+    private static double value;
     private double valueChange;
     private HashMap<Date, Integer> valueOverTime;
-    private int volume;
+    private static int volume;
     private double week52High;
     private double week52Low;
     private NumberAxis xAxis = new NumberAxis();
@@ -46,9 +48,9 @@ public class Stock {
 
     public Stock(String symbol) throws IOException{
         this.symbol = symbol;
-        long time1 = Instant.now().getEpochSecond();
+        time = Instant.now().getEpochSecond();
         int unixDate1 = 0;
-        int unixDate2 = Math.toIntExact(time1);
+        int unixDate2 = Math.toIntExact(time);
         address = "https://query1.finance.yahoo.com/v7/finance/download/^"
                 + symbol +  "?period1=" + Integer.toString(unixDate1) + "&period2="
                 + Integer.toString(unixDate2) + "&interval=1d&events=history&crumb=aDdGQcp1f2A";
@@ -68,12 +70,12 @@ public class Stock {
         for (ArrayList<String> array : arrayOfData) {
             Date date = convertStringToDate(array.get(0));
             int dailyValue = Integer.parseInt(array.get(5));
-            series.getData().add(new XYChart.Data(date, dailyValue));
+            series.getData().add(new XYChart.Data(date.toString(), dailyValue));
         }
         areaChart.getData().addAll(series);
     }
 
-    public ArrayList<String> CSVtoArrayList(String csv) {
+    public static ArrayList<String> CSVtoArrayList(String csv) {
         ArrayList<String> result = new ArrayList<String>();
         if (csv != null) {
             String[] splitData = csv.split("\\s*,\\s*");
@@ -90,7 +92,36 @@ public class Stock {
         return areaChart;
     }
 
-    public void setData() {
+    public static void update() throws IOException {
+        long oldTime = Stock.time;
+        long currentTime = Instant.now().getEpochSecond();
+        address = "https://query1.finance.yahoo.com/v7/finance/download/^"
+                + symbol +  "?period1=" + Integer.toString(Math.toIntExact(oldTime)) + "&period2="
+                + Integer.toString(Math.toIntExact(currentTime)) + "&interval=1d&events=history&crumb=aDdGQcp1f2A";
+        url = new URL(address);
+        urlConnection = url.openConnection();
+        inStream = new InputStreamReader(urlConnection.getInputStream());
+
+        arrayOfData = new ArrayList<ArrayList<String>>();
+        String buffLine;
+        buff = new BufferedReader(inStream);
+
+        Date date;
+        int dailyValue;
+        while ((buffLine = buff.readLine()) != null) {
+            ArrayList<String> csv = CSVtoArrayList(buffLine);
+            arrayOfData.add(csv);
+            date = convertStringToDate(csv.get(0));
+            dailyValue = Integer.parseInt(csv.get(5));
+            series.getData().add(new XYChart.Data(date.toString(), dailyValue));
+        }
+        setData();
+        areaChart.getData().clear();
+        areaChart.getData().addAll(series);
+
+    }
+
+    public static void setData() {
         open = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 1).get(1));
         high = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 1).get(2));
         low = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 1).get(3));
@@ -156,7 +187,7 @@ public class Stock {
         return positive;
     }
 
-    public Date convertStringToDate(String string) {
+    public static Date convertStringToDate(String string) {
         String year = string.substring(0, 4);
         String month = string.substring(5, 7);
         String day = string.substring(8, string.length());

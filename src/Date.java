@@ -88,6 +88,10 @@ public class Date {
         this.month = month;
     }
 
+    /**
+     * Returns the date in string format
+     * @return String
+     */
     public String toString() {
         String day = "";
         String month = "";
