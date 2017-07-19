@@ -3,10 +3,13 @@ package src;
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.State;
 
+import javafx.scene.control.Alert.AlertType;
 import javafx.application.Application;
+import javafx.scene.control.ButtonType;
+import java.io.IOException;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import java.io.IOException;
+import javafx.scene.control.TextInputDialog;
 
 /**
  * Created by joshuareno on 7/16/17.
