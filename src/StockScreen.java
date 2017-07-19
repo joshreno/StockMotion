@@ -1,5 +1,6 @@
 package src;
 
+import javafx.scene.control.Control;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,18 +18,22 @@ public class StockScreen extends BorderPane{
     private static StockInformation info = new StockInformation(null);
     private static HBox hbox = new HBox();
     private static StockMenu exchangesMenu = new StockMenu();
+    private static ControlInformation controlInformation = new ControlInformation();
+    private static HBox controlBox = new HBox();
 
     /**
      * Constructor sets the BorderPane nodes
      */
-    public StockScreen() {
+    public StockScreen() throws IOException{
         vboxList.getChildren().addAll(stockMenu.getListOfStocks());
         vboxInfo.getChildren().addAll(info.getRootNode());
         hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());
+        controlBox.getChildren().addAll(controlInformation.getRootNode());
         this.setTop(hbox);
         this.setLeft(vboxList);
         this.setRight(vboxInfo);
         this.setCenter(stock.getAreaChart());
+        this.setBottom(controlBox);
     }
 
     /**
@@ -55,5 +60,9 @@ public class StockScreen extends BorderPane{
 
     public static Stock getStock() {
         return stock;
+    }
+
+    public static ControlInformation getControlInformation() {
+        return controlInformation;
     }
 }

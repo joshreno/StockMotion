@@ -6,6 +6,7 @@ import com.leapmotion.leap.Gesture.State;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
+import java.io.IOException;
 
 /**
  * Created by joshuareno on 7/16/17.
@@ -33,7 +34,7 @@ public class StockMotion extends Application{
      * Returns the StockScreen variable
      * @return StockScreen
      */
-    public static StockScreen getStockScreen() {
+    public static StockScreen getStockScreen() throws IOException{
         return stockScreen;
     }
 

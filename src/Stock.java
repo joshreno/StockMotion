@@ -100,7 +100,6 @@ public class Stock {
         url = new URL(address);
         urlConnection = url.openConnection();
         inStream = new InputStreamReader(urlConnection.getInputStream());
-
         arrayOfData = new ArrayList<ArrayList<String>>();
         String buffLine;
         buff = new BufferedReader(inStream);
