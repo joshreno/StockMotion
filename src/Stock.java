@@ -1,15 +1,15 @@
 package src;
 
-import java.util.ArrayList;
-import javafx.scene.chart.AreaChart;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.time.Instant;
 import java.io.IOException;
-import java.lang.Math;
-import javafx.scene.chart.NumberAxis;
 import java.net.URL;
 import java.net.URLConnection;
+import java.time.Instant;
+import java.util.ArrayList;
+
+import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 
 /**
@@ -188,8 +188,6 @@ public class Stock {
     public double getValueChange() {
         return valueChange;
     }
-
-
 
     public static Date convertStringToDate(String string) {
         String year = string.substring(0, 4);

@@ -1,18 +1,19 @@
 package src;
 
-import javafx.scene.layout.HBox;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 
 /**
  * Created by joshuareno on 7/18/17.
  */
+
 public class ControlInformation {
     private HBox hbox;
     private Button addStock;
@@ -73,6 +74,4 @@ public class ControlInformation {
         status.setText("Leap Motion Status: " + statusString);
         hbox.getChildren().addAll(addStock, deleteStock, status);
     }
-
-
 }

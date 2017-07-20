@@ -1,10 +1,10 @@
 package src;
 
-import javafx.scene.control.Control;
+import java.io.IOException;
+
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import java.io.IOException;
 
 /**
  * Created by joshuareno on 7/17/17.
