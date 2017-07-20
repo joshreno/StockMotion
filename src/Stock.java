@@ -3,7 +3,6 @@ package src;
 import java.util.ArrayList;
 import javafx.scene.chart.AreaChart;
 import java.io.BufferedReader;
-import java.util.HashMap;
 import java.io.InputStreamReader;
 import java.time.Instant;
 import java.io.IOException;
@@ -16,6 +15,7 @@ import javafx.scene.chart.XYChart;
 /**
  * Created by joshuareno on 7/17/17.
  */
+
 public class Stock {
     private static String address;
     private static AreaChart areaChart;
@@ -36,8 +36,7 @@ public class Stock {
     private static URL url;
     private static URLConnection urlConnection;
     private static double value;
-    private double valueChange;
-    private HashMap<Date, Integer> valueOverTime;
+    private static double valueChange;
     private static int volume;
     //private double week52High;
     //private double week52Low;
@@ -134,6 +133,7 @@ public class Stock {
         } else if (percentChange <= 0) {
             positive = false;
         }
+        valueChange = value - yesterdayValue;
     }
 
 
@@ -184,6 +184,12 @@ public class Stock {
     public boolean getChange() {
         return positive;
     }
+
+    public double getValueChange() {
+        return valueChange;
+    }
+
+
 
     public static Date convertStringToDate(String string) {
         String year = string.substring(0, 4);

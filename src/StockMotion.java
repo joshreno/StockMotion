@@ -31,6 +31,7 @@ public class StockMotion extends Application{
         stockEndDate = new Date();
         controller = new Controller();
         listener = new MotionListener();
+        stockScreen = new StockScreen();
     }
 
     /**

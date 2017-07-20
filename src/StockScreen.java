@@ -24,7 +24,7 @@ public class StockScreen extends BorderPane{
     /**
      * Constructor sets the BorderPane nodes
      */
-    public StockScreen() throws IOException{
+    public StockScreen() {
         vboxList.getChildren().addAll(stockMenu.getListOfStocks());
         vboxInfo.getChildren().addAll(info.getRootNode());
         hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());

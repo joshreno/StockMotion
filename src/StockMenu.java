@@ -30,8 +30,17 @@ public class StockMenu {
         }
         Stock stock = new Stock(symbol);
         listOfStocks.add(stock);
-        listOfButtons.add(new Button(stock.getSymbol()));
-        // check if stock exists or not -> not button
+        if (stock.getChange()) {
+            Button button = new Button(stock.getSymbol() + ": " + stock.getValue());
+            button.setStyle("-fx-background-color: #50f442;");
+            listOfButtons.add(button);
+        } else {
+            Button button = new Button(stock.getSymbol() + ": " + stock.getValue());
+            button.setStyle("-fx-background-color: #ff0000;");
+            listOfButtons.add(button);
+        }
+
+        // check if stock exists or not ->  button
     }
 
     /**
