@@ -49,6 +49,15 @@ public class StockMotion extends Application{
     }
 
     public Scene startStockMotion() {
+        stockScreen.getControlInformation().getAddStock().setOnMouseClicked((event) -> {
+
+        });
+
+        stockScreen.getControlInformation().getDeleteStock().setOnMouseClicked((event) -> {
+
+        });
+
+
         // button implementation
         scene = new Scene(stockScreen);
         return scene;
