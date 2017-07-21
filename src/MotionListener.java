@@ -12,18 +12,22 @@ public class MotionListener extends Listener{
 
     public void onInit(Controller controller) {
         setInitString();
+        StockMotion.getStockScreen().getControlInformation().setStatusString(status);
     }
 
     public void onConnect(Controller controller) {
         setConnectString();
+        StockMotion.getStockScreen().getControlInformation().setStatusString(status);
     }
 
     public void onDisconnect(Controller controller) {
         setDisconnectString();
+        StockMotion.getStockScreen().getControlInformation().setStatusString(status);
     }
 
     public void onExit(Controller controller) {
         setExitString();
+        StockMotion.getStockScreen().getControlInformation().setStatusString(status);
     }
 
     public void onFrame(Controller controller) {}

@@ -1,11 +1,8 @@
 package src;
 
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -19,7 +16,6 @@ public class ControlInformation {
     private Button addStock;
     private Button deleteStock;
     private Label status;
-    private Alert alert;
 
     public ControlInformation() {
         hbox = new HBox();
@@ -46,16 +42,8 @@ public class ControlInformation {
         return deleteStock;
     }
 
-    public Label getLabel() {
-        return status;
-    }
-
-    public Alert getAlert() {
-        return alert;
-    }
-
     public void setStatusString(LeapStatus leapStatus) {
-        hbox.getChildren().clear();
+        hbox.getChildren().remove(status);
         String statusString = "";
         switch(leapStatus) {
             case INITIALIZED: statusString = "Initialized";
@@ -72,6 +60,7 @@ public class ControlInformation {
                 break;
         }
         status.setText("Leap Motion Status: " + statusString);
-        hbox.getChildren().addAll(addStock, deleteStock, status);
+        hbox.getChildren().addAll(status);
     }
+
 }

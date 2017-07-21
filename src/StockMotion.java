@@ -6,7 +6,6 @@ import java.time.Instant;
 import javafx.application.Application;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -46,7 +45,7 @@ public class StockMotion extends Application{
      * Returns the StockScreen variable
      * @return StockScreen
      */
-    public static StockScreen getStockScreen() throws IOException{
+    public static StockScreen getStockScreen() {
         return stockScreen;
     }
 
