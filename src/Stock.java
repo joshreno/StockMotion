@@ -124,7 +124,6 @@ public class Stock {
         close = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 1).get(4));
         value = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 1).get(5));
         volume = Integer.parseInt(arrayOfData.get(arrayOfData.size() - 1).get(6));
-
         double yesterdayValue = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 2).get(5));
         percentChange = 100 * (value - yesterdayValue) / (yesterdayValue);
         if (percentChange > 0) {

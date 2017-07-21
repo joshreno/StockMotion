@@ -52,6 +52,7 @@ public class StockScreen extends BorderPane{
         this.setTop(hbox);
         stock.update();
         this.setCenter(stock.getAreaChart());
+        stock.getAreaChart().setVisible(true);
 
     }
 
