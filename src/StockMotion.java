@@ -1,8 +1,10 @@
 package src;
 
 import java.io.IOException;
+import java.time.Instant;
 
 import javafx.application.Application;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextInputDialog;
@@ -50,15 +52,33 @@ public class StockMotion extends Application{
 
     public Scene startStockMotion() {
         stockScreen.getControlInformation().getAddStock().setOnMouseClicked((event) -> {
+            TextInputDialog dialog = new TextInputDialog("Ticker Symbol");
+            dialog.setTitle("Add Stock");
+            dialog.setContentText("Enter ticker symbol");
+            String string = dialog.showAndWait().toString();
 
+            long time2 = Instant.now().getEpochSecond();
+            try {
+                stockScreen.getStockMenu().addStock(string, new Date(), new Date(21, 2017, 7));
+            } catch (IOException e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Ticker Symbol Error");
+                alert.setContentText("The symbol you entered is not correct.");
+            }
         });
-
         stockScreen.getControlInformation().getDeleteStock().setOnMouseClicked((event) -> {
-
+            TextInputDialog dialog = new TextInputDialog("Ticker Symbol");
+            dialog.setTitle("Delet Stock");
+            dialog.setContentText("Enter ticker symbol");
+            String string = dialog.showAndWait().toString();
+            try {
+                stockScreen.getStockMenu().deleteStock(string);
+            } catch (StockDoesNotExistException e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Ticker Symbol Error");
+                alert.setContentText(e.getMessage());
+            }
         });
-
-
-        // button implementation
         scene = new Scene(stockScreen);
         return scene;
     }
@@ -66,5 +86,4 @@ public class StockMotion extends Application{
     public static void main(String[] args) {
         launch(args);
     }
-
 }

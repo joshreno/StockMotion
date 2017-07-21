@@ -66,4 +66,8 @@ public class StockScreen extends BorderPane{
     public static ControlInformation getControlInformation() {
         return controlInformation;
     }
+
+    public static StockMenu getStockMenu() {
+        return stockMenu;
+    }
 }

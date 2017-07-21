@@ -23,7 +23,7 @@ public class StockMenu {
      * @param startDate
      * @param endDate
      */
-    private void addStock(String symbol, Date startDate, Date endDate) throws IOException{
+    public void addStock(String symbol, Date startDate, Date endDate) throws IOException{
         for (Stock stock : listOfStocks) {
             if (stock.getSymbol().equals(symbol)) {
                 return;
@@ -48,11 +48,16 @@ public class StockMenu {
      * Deletes the stock from the list
      * @param symbol
      */
-    private void deleteStock(String symbol) {
+    public void deleteStock(String symbol) throws StockDoesNotExistException{
+        boolean exists = false;
         for (Stock stock : listOfStocks) {
             if (stock.getSymbol().equals(symbol)) {
                 listOfStocks.remove(stock);
+                exists = true;
             }
+        }
+        if (!exists) {
+            throw new StockDoesNotExistException("The ticker symbol is not in your database");
         }
         for (Button button : listOfButtons) {
             if (button.getText().equals(symbol)) {
@@ -66,7 +71,7 @@ public class StockMenu {
      * @param symbol
      * @return Stock
      */
-    private Stock getStock(String symbol) {
+    public Stock getStock(String symbol) {
         for (Stock stock : listOfStocks) {
             if (stock.getSymbol().equals(symbol)) {
                 return stock;
