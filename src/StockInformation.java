@@ -13,13 +13,15 @@ public class StockInformation {
     private static double low;
     private static double open;
     private static double close;
-    // private static double marketCap;
     private static double value;
     private static double volume;
+    private static double valueChange;
+    private static VBox vbox = new VBox();
+
+    // private static double marketCap;
     // private static double week52High;
     // private static double week52Low;
-    private static double yield;
-    private static VBox vbox = new VBox();
+    // private static double yield;
 
     /**
      * Constructor sets the information for a particular stock
@@ -32,12 +34,14 @@ public class StockInformation {
             low = stock.getLow();
             open = stock.getOpen();
             close = stock.getClose();
-            // marketCap = stock.getMarketCap();
             value = stock.getValue();
             volume = stock.getVolume();
+            valueChange = stock.getValueChange();
+
+            // marketCap = stock.getMarketCap();
             // week52High = stock.getWeek52High();
             // week52Low = stock.getWeek52Low();
-            yield = stock.getYield();
+            //yield = stock.getYield();
         }
     }
 
@@ -51,12 +55,14 @@ public class StockInformation {
         low = stock.getLow();
         open = stock.getOpen();
         close = stock.getClose();
-        // marketCap = stock.getMarketCap();
         value = stock.getValue();
         volume = stock.getVolume();
+        valueChange = stock.getValueChange();
+
+        // marketCap = stock.getMarketCap();
         // week52High = stock.getWeek52High();
         // week52Low = stock.getWeek52Low();
-        yield = stock.getYield();
+        //yield = stock.getYield();
     }
 
     /**
@@ -66,12 +72,15 @@ public class StockInformation {
         high = stock.getHigh();
         low = stock.getLow();
         open = stock.getOpen();
-        // marketCap = stock.getMarketCap();
+        close = stock.getClose();
         value = stock.getValue();
         volume = stock.getVolume();
+        valueChange = stock.getValueChange();
+
+        // marketCap = stock.getMarketCap();
         // week52High = stock.getWeek52High();
         // week52Low = stock.getWeek52Low();
-        yield = stock.getYield();
+        // yield = stock.getYield();
     }
 
     /**
@@ -85,23 +94,29 @@ public class StockInformation {
         Label lowLabel = new Label("Low: " + low);
         Label openLabel = new Label("Open: " + open);
         Label closeLabel = new Label("Close: " + close);
-        // Label marketCapLabel = new Label("Market Cap: " + marketCap);
         Label valueLabel = new Label("Value: " + value);
         Label volumeLabel = new Label("Volume: " + volume);
+        Label valueChangeLabel = new Label("Value Change: " + valueChange);
+
+        // Label marketCapLabel = new Label("Market Cap: " + marketCap);
         // Label week52HighLabel = new Label("52 Week High: " + week52High);
         // Label week52LowLabel = new Label("52 Week Low: " + week52Low);
-        Label yieldLabel = new Label("Yield: " + yield);
+        // Label yieldLabel = new Label("Yield: " + yield);
+
         vbox.getChildren().addAll(
                 highLabel,
                 lowLabel,
                 openLabel,
                 closeLabel,
-                // marketCapLabel,
                 valueLabel,
                 volumeLabel,
+                valueChangeLabel
+
+                // marketCapLabel,
                 // week52HighLabel,
                 // week52LowLabel,
-                yieldLabel);
+                //yieldLabel
+        );
         return vbox;
     }
 }

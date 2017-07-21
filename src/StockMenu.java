@@ -12,8 +12,8 @@ import javafx.scene.layout.VBox;
  */
 
 public class StockMenu {
-    private ArrayList<Stock> listOfStocks;
-    private ArrayList<Button> listOfButtons;
+    private ArrayList<Stock> listOfStocks = new ArrayList<Stock>();
+    private ArrayList<Button> listOfButtons = new ArrayList<Button>();
     private VBox vbox = new VBox(0);
     private HBox hbox = new HBox(0);
 
@@ -80,6 +80,9 @@ public class StockMenu {
      * @return VBox
      */
     public VBox getListOfStocks() {
+        if (listOfButtons.size() == 0) {
+            return vbox;
+        }
         for (Button button: listOfButtons) {
             button.setOnMousePressed(e -> {
                 for (Stock stock: listOfStocks) {

@@ -22,6 +22,8 @@ public class StockMotion extends Application{
     private MotionListener listener;
     private Date stockStartDate;
     private Date stockEndDate;
+    private Scene scene;
+    private Stage stage;
 
     /**
      * Starts the application
@@ -33,6 +35,9 @@ public class StockMotion extends Application{
         controller = new Controller();
         listener = new MotionListener();
         stockScreen = new StockScreen();
+        stage = primaryStage;
+        stage.setScene(startStockMotion());
+        stage.show();
     }
 
     /**
@@ -43,7 +48,14 @@ public class StockMotion extends Application{
         return stockScreen;
     }
 
+    public Scene startStockMotion() {
+        // button implementation
+        scene = new Scene(stockScreen);
+        return scene;
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
+
 }

@@ -40,9 +40,9 @@ public class Stock {
     private static int volume;
     //private double week52High;
     //private double week52Low;
-    private NumberAxis xAxis = new NumberAxis();
-    private NumberAxis yAxis = new NumberAxis();
-    private double yield;
+    //private NumberAxis xAxis = new NumberAxis();
+    //private NumberAxis yAxis = new NumberAxis();
+    // private double yield;
 
     public Stock(String symbol) throws IOException{
         this.symbol = symbol;
@@ -173,9 +173,9 @@ public class Stock {
 //        return week52Low;
 //    }
 
-    public double getYield() {
-        return yield;
-    }
+//    public double getYield() {
+//        return yield;
+//    }
 
     public String getSymbol() {
         return symbol;

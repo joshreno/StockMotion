@@ -26,13 +26,14 @@ public class StockScreen extends BorderPane{
      */
     public StockScreen() {
         vboxList.getChildren().addAll(stockMenu.getListOfStocks());
-        vboxInfo.getChildren().addAll(info.getRootNode());
-        hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());
+        // vboxInfo.getChildren().addAll(info.getRootNode());
+        // hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());
         controlBox.getChildren().addAll(controlInformation.getRootNode());
         this.setTop(hbox);
         this.setLeft(vboxList);
         this.setRight(vboxInfo);
-        this.setCenter(stock.getAreaChart());
+        // this.setCenter(stock.getAreaChart());
+        this.setCenter(new VBox());
         this.setBottom(controlBox);
     }
 
