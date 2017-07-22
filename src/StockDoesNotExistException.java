@@ -6,6 +6,6 @@ package src;
 
 public class StockDoesNotExistException extends Exception {
     public StockDoesNotExistException(String message) {
-        super("Stock: " + message + " does not exist.");
+        super("Stock" + message + " does not exist.");
     }
 }

@@ -58,10 +58,12 @@ public class StockMotion extends Application{
             String string = dialog.showAndWait().toString();
             try {
                 stockScreen.getStockMenu().addStock(string, new Date(), new Date().getCurrentDay());
+                stockScreen.update();
             } catch (IOException e) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Ticker Symbol Error");
                 alert.setContentText("The symbol you entered is not correct.");
+                alert.showAndWait();
             }
         });
         stockScreen.getControlInformation().getDeleteStock().setOnMouseClicked((event) -> {
@@ -71,10 +73,12 @@ public class StockMotion extends Application{
             String string = dialog.showAndWait().toString();
             try {
                 stockScreen.getStockMenu().deleteStock(string);
-            } catch (StockDoesNotExistException e) {
+                stockScreen.update();
+            } catch (StockDoesNotExistException | IOException e) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Ticker Symbol Error");
                 alert.setContentText(e.getMessage());
+                alert.showAndWait();
             }
         });
         scene = new Scene(stockScreen);

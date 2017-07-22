@@ -57,7 +57,7 @@ public class StockMenu {
             }
         }
         if (!exists) {
-            throw new StockDoesNotExistException("The ticker symbol is not in your database");
+            throw new StockDoesNotExistException("");
         }
         for (Button button : listOfButtons) {
             if (button.getText().equals(symbol)) {
@@ -94,11 +94,11 @@ public class StockMenu {
                     if (stock.getSymbol().equals(button.getText())) {
                         StockInformation.setStockInformation(stock);
                         StockInformation.update();
-                        try {
-                            StockMotion.getStockScreen().update();
-                        } catch (IOException exception) {
-                            // StockMotion needs to launch alert
-                        }
+//                        try {
+//                            StockMotion.getStockScreen().update();
+//                        } catch (IOException exception) {
+//                            // StockMotion needs to launch alert
+//                        }
                         StockScreen.setStock(stock);
                     }
                 }
