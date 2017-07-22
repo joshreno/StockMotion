@@ -90,6 +90,10 @@ public class Date {
         this.month = month;
     }
 
+    /**
+     * returns the current day
+     * @return Date
+     */
     public Date getCurrentDay() {
         return new Date(
                 Calendar.getInstance().get(Calendar.DAY_OF_MONTH),

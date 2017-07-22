@@ -1,8 +1,6 @@
 package src;
 
 import java.io.IOException;
-import java.time.Instant;
-import java.util.Calendar;
 
 import javafx.application.Application;
 import javafx.scene.control.Alert;
@@ -50,6 +48,10 @@ public class StockMotion extends Application{
         return stockScreen;
     }
 
+    /**
+     * Returns the scene after setting the actions of the buttons
+     * @return Scene
+     */
     public Scene startStockMotion() {
         stockScreen.getControlInformation().getAddStock().setOnMouseClicked((event) -> {
             TextInputDialog dialog = new TextInputDialog("Ticker Symbol");
@@ -86,6 +88,10 @@ public class StockMotion extends Application{
         return scene;
     }
 
+    /**
+     * Launches args
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }

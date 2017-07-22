@@ -25,8 +25,6 @@ public class Stock {
     private static InputStreamReader inStream;
     private static double low;
     private static double open;
-    // private double marketCap;
-    // private int marketCapChange;
     private static boolean positive;
     private static double percentChange;
     private static XYChart.Series series;
@@ -37,12 +35,12 @@ public class Stock {
     private static double value;
     private static double valueChange;
     private static int volume;
-    //private double week52High;
-    //private double week52Low;
-    //private NumberAxis xAxis = new NumberAxis();
-    //private NumberAxis yAxis = new NumberAxis();
-    // private double yield;
 
+    /**
+     * Sets the appropriate information about the stock
+     * @param symbol
+     * @throws IOException
+     */
     public Stock(String symbol) throws IOException{
         this.symbol = symbol;
         time = Instant.now().getEpochSecond();
@@ -79,6 +77,11 @@ public class Stock {
         areaChart.getData().addAll(series);
     }
 
+    /**
+     * Returns the arraylist<String> for a csv string
+     * @param csv
+     * @return ArrayList<String>
+     */
     public static ArrayList<String> CSVtoArrayList(String csv) {
         ArrayList<String> result = new ArrayList<String>();
         if (csv != null) {
@@ -92,10 +95,18 @@ public class Stock {
         return result;
     }
 
+    /**
+     * Returns the areaChart from the stock's information
+     * @return AreaChart
+     */
     public AreaChart<Number, Number> getAreaChart() {
         return areaChart;
     }
 
+    /**
+     * Updates the stock's information
+     * @throws IOException
+     */
     public static void update() throws IOException {
         long oldTime = Stock.time;
         long currentTime = Instant.now().getEpochSecond();
@@ -124,6 +135,9 @@ public class Stock {
 
     }
 
+    /**
+     * Sets the data of certain variables
+     */
     public static void setData() {
         open = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 1).get(1));
         high = Double.parseDouble(arrayOfData.get(arrayOfData.size() - 1).get(2));
@@ -141,59 +155,83 @@ public class Stock {
         valueChange = value - yesterdayValue;
     }
 
-
+    /**
+     * Returns the high value
+     * @return Double
+     */
     public Double getHigh() {
         return high;
     }
 
+    /**
+     * Returns the low value
+     * @return Double
+     */
     public Double getLow() {
         return low;
     }
 
+    /**
+     * Returns the open value
+     * @return Double
+     */
     public Double getOpen() {
         return open;
     }
 
+    /**
+     * Returns the close value
+     * @return Double
+     */
     public Double getClose() {
         return close;
     }
 
-//    public double getMarketCap() {
-//        return marketCap;
-//    }
-
+    /**
+     * Returns the value
+     * @return Double
+     */
     public double getValue() {
         return value;
     }
 
+    /**
+     * Returns the volume
+     * @return Integer
+     */
     public int getVolume() {
         return volume;
     }
 
-//    public double getWeek52High() {
-//        return week52High;
-//    }
-
-//    public double getWeek52Low() {
-//        return week52Low;
-//    }
-
-//    public double getYield() {
-//        return yield;
-//    }
-
+    /**
+     * Returns the stock's ticker symbol
+     * @return String
+     */
     public String getSymbol() {
         return symbol;
     }
 
+    /**
+     * Returns whether or not there has been a change in the value
+     * @return Boolean
+     */
     public boolean getChange() {
         return positive;
     }
 
+    /**
+     * Returns the value change
+     * @return Double
+     */
     public double getValueChange() {
         return valueChange;
     }
 
+    /**
+     * Returns the stock's date in Date from a String
+     * @param string
+     * @return Date
+     */
     public static Date convertStringToDate(String string) {
         String year = string.substring(0, 4);
         String month = string.substring(5, 7);

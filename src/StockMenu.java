@@ -94,11 +94,6 @@ public class StockMenu {
                     if (stock.getSymbol().equals(button.getText())) {
                         StockInformation.setStockInformation(stock);
                         StockInformation.update();
-//                        try {
-//                            StockMotion.getStockScreen().update();
-//                        } catch (IOException exception) {
-//                            // StockMotion needs to launch alert
-//                        }
                         StockScreen.setStock(stock);
                     }
                 }

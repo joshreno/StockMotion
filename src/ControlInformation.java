@@ -16,6 +16,9 @@ public class ControlInformation {
     private Button deleteStock;
     private Label status;
 
+    /**
+     * Sets the information for the button, hbox, imag, and label
+     */
     public ControlInformation() {
         hbox = new HBox();
         Image addStockImage = new Image(
@@ -29,18 +32,34 @@ public class ControlInformation {
         hbox.getChildren().addAll(addStock, deleteStock, status);
     }
 
+    /**
+     * Returns the HBox
+     * @return HBox
+     */
     public HBox getRootNode() {
         return hbox;
     }
 
+    /**
+     * Returns the addStock button
+     * @return Button
+     */
     public Button getAddStock() {
         return addStock;
     }
 
+    /**
+     * Returns the deleteStock button
+     * @return Button
+     */
     public Button getDeleteStock() {
         return deleteStock;
     }
 
+    /**
+     * Sets the status of the Leap Motion Controller and the HBox
+     * @param leapStatus
+     */
     public void setStatusString(LeapStatus leapStatus) {
         hbox.getChildren().remove(status);
         String statusString = "";

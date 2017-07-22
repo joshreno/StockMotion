@@ -18,10 +18,6 @@ public class StockInformation {
     private static double valueChange;
     private static VBox vbox = new VBox();
 
-    // private static double marketCap;
-    // private static double week52High;
-    // private static double week52Low;
-    // private static double yield;
 
     /**
      * Constructor sets the information for a particular stock
@@ -37,11 +33,6 @@ public class StockInformation {
             value = stock.getValue();
             volume = stock.getVolume();
             valueChange = stock.getValueChange();
-
-            // marketCap = stock.getMarketCap();
-            // week52High = stock.getWeek52High();
-            // week52Low = stock.getWeek52Low();
-            //yield = stock.getYield();
         }
     }
 
@@ -58,11 +49,6 @@ public class StockInformation {
         value = stock.getValue();
         volume = stock.getVolume();
         valueChange = stock.getValueChange();
-
-        // marketCap = stock.getMarketCap();
-        // week52High = stock.getWeek52High();
-        // week52Low = stock.getWeek52Low();
-        //yield = stock.getYield();
     }
 
     /**
@@ -76,11 +62,6 @@ public class StockInformation {
         value = stock.getValue();
         volume = stock.getVolume();
         valueChange = stock.getValueChange();
-
-        // marketCap = stock.getMarketCap();
-        // week52High = stock.getWeek52High();
-        // week52Low = stock.getWeek52Low();
-        // yield = stock.getYield();
     }
 
     /**
@@ -97,12 +78,6 @@ public class StockInformation {
         Label valueLabel = new Label("Value: " + value);
         Label volumeLabel = new Label("Volume: " + volume);
         Label valueChangeLabel = new Label("Value Change: " + valueChange);
-
-        // Label marketCapLabel = new Label("Market Cap: " + marketCap);
-        // Label week52HighLabel = new Label("52 Week High: " + week52High);
-        // Label week52LowLabel = new Label("52 Week Low: " + week52Low);
-        // Label yieldLabel = new Label("Yield: " + yield);
-
         vbox.getChildren().addAll(
                 highLabel,
                 lowLabel,
@@ -110,13 +85,7 @@ public class StockInformation {
                 closeLabel,
                 valueLabel,
                 volumeLabel,
-                valueChangeLabel
-
-                // marketCapLabel,
-                // week52HighLabel,
-                // week52LowLabel,
-                //yieldLabel
-        );
+                valueChangeLabel);
         return vbox;
     }
 }
