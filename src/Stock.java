@@ -60,7 +60,7 @@ public class Stock {
         } catch (IOException e) {
             System.out.println(e.getStackTrace());
         }
-        // this is a problem
+        // this is a problem -> something is null which leads to a null pointer exception
 
         arrayOfData = new ArrayList<ArrayList<String>>();
         String buffLine;
