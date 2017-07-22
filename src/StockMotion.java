@@ -2,6 +2,7 @@ package src;
 
 import java.io.IOException;
 import java.time.Instant;
+import java.util.Calendar;
 
 import javafx.application.Application;
 import javafx.scene.control.Alert;
@@ -58,7 +59,11 @@ public class StockMotion extends Application{
 
             long time2 = Instant.now().getEpochSecond();
             try {
-                stockScreen.getStockMenu().addStock(string, new Date(), new Date(21, 2017, 7));
+                stockScreen.getStockMenu().addStock(string, new Date(),
+                        new Date(
+                                Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
+                                Calendar.getInstance().get(Calendar.YEAR) - 1900,
+                                Calendar.getInstance().get(Calendar.MONTH)));
             } catch (IOException e) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Ticker Symbol Error");
