@@ -55,9 +55,10 @@ public class StockMotion extends Application{
             TextInputDialog dialog = new TextInputDialog("Ticker Symbol");
             dialog.setTitle("Add Stock");
             dialog.setContentText("Enter ticker symbol");
-            String string = dialog.showAndWait().toString();
+            String string = dialog.showAndWait().get();
+
             try {
-                stockScreen.getStockMenu().addStock(string, new Date(), new Date().getCurrentDay());
+                stockScreen.getStockMenu().addStock(string, new Date(), new Date().getCurrentDay()); // this one
                 stockScreen.update();
             } catch (IOException e) {
                 Alert alert = new Alert(AlertType.ERROR);

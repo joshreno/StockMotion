@@ -48,12 +48,19 @@ public class Stock {
         time = Instant.now().getEpochSecond();
         int unixDate1 = 0;
         int unixDate2 = Math.toIntExact(time);
-        address = "https://query1.finance.yahoo.com/v7/finance/download/^"
-                + symbol +  "?period1=" + Integer.toString(unixDate1) + "&period2="
+        address = "https://query1.finance.yahoo.com/v7/finance/download/"
+                + symbol.toString() +  "?period1=" + Integer.toString(unixDate1) + "&period2="
                 + Integer.toString(unixDate2) + "&interval=1d&events=history&crumb=aDdGQcp1f2A";
         url = new URL(address);
+
+        //
         urlConnection = url.openConnection();
-        inStream = new InputStreamReader(urlConnection.getInputStream());
+        try {
+            inStream = new InputStreamReader(urlConnection.getInputStream());
+        } catch (IOException e) {
+            System.out.println(e.getStackTrace());
+        }
+        // this is a problem
 
         arrayOfData = new ArrayList<ArrayList<String>>();
         String buffLine;
@@ -92,7 +99,7 @@ public class Stock {
     public static void update() throws IOException {
         long oldTime = Stock.time;
         long currentTime = Instant.now().getEpochSecond();
-        address = "https://query1.finance.yahoo.com/v7/finance/download/^"
+        address = "https://query1.finance.yahoo.com/v7/finance/download/"
                 + symbol +  "?period1=" + Integer.toString(Math.toIntExact(oldTime)) + "&period2="
                 + Integer.toString(Math.toIntExact(currentTime)) + "&interval=1d&events=history&crumb=aDdGQcp1f2A";
         url = new URL(address);

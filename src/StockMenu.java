@@ -29,7 +29,7 @@ public class StockMenu {
                 return;
             }
         }
-        Stock stock = new Stock(symbol);
+        Stock stock = new Stock(symbol); // check this
         listOfStocks.add(stock);
         if (stock.getChange()) {
             Button button = new Button(stock.getSymbol() + ": " + stock.getValue());
