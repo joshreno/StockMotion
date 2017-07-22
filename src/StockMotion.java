@@ -56,14 +56,8 @@ public class StockMotion extends Application{
             dialog.setTitle("Add Stock");
             dialog.setContentText("Enter ticker symbol");
             String string = dialog.showAndWait().toString();
-
-            long time2 = Instant.now().getEpochSecond();
             try {
-                stockScreen.getStockMenu().addStock(string, new Date(),
-                        new Date(
-                                Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
-                                Calendar.getInstance().get(Calendar.YEAR) - 1900,
-                                Calendar.getInstance().get(Calendar.MONTH)));
+                stockScreen.getStockMenu().addStock(string, new Date(), new Date().getCurrentDay());
             } catch (IOException e) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Ticker Symbol Error");

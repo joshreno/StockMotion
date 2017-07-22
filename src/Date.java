@@ -1,5 +1,7 @@
 package src;
 
+import java.util.Calendar;
+
 /**
  * Created by joshuareno on 7/16/17.
  */
@@ -88,6 +90,13 @@ public class Date {
         this.month = month;
     }
 
+    public Date getCurrentDay() {
+        return new Date(
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
+                Calendar.getInstance().get(Calendar.YEAR) - 1900,
+                Calendar.getInstance().get(Calendar.MONTH));
+    }
+
     /**
      * Returns the date in string format
      * @return String
@@ -102,6 +111,5 @@ public class Date {
             month = "0" + this.month;
         }
         return day + "/" + month + "/" + year;
-
     }
 }
