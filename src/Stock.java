@@ -56,11 +56,13 @@ public class Stock {
         try {
             inStream = new InputStreamReader(urlConnection.getInputStream());
         } catch (IOException e) {
-            System.out.println(e.getStackTrace());
+            System.out.println("hi1");
         }
-        // this is a problem -> something is null which leads to a null pointer exception
+        // this is a problem -> something is null which leads to a null pointer exceptions
 
+        System.out.println("hi2");
         arrayOfData = new ArrayList<ArrayList<String>>();
+        System.out.println("hi3");
         String buffLine;
         buff = new BufferedReader(inStream);
         while ((buffLine = buff.readLine()) != null) {
