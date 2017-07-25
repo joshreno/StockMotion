@@ -3,9 +3,13 @@ package src;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+import src.lib.*;
+
 /**
  * Created by joshuareno on 7/17/17.
  */
+
+import src.lib.YahooFinanceAPI.main.java.yahoofinance.*;
 
 public class StockInformation {
     private static Stock stock;
@@ -24,6 +28,7 @@ public class StockInformation {
      * @param stock
      */
     public StockInformation(Stock stock) {
+
         if (stock != null) {
             this.stock = stock;
             high = stock.getHigh();
