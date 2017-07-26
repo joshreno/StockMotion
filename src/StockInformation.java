@@ -3,13 +3,11 @@ package src;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-import src.lib.*;
+import yahoofinance.*;
 
 /**
  * Created by joshuareno on 7/17/17.
  */
-
-import src.lib.*;
 
 public class StockInformation {
     private static Stock stock;

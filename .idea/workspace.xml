@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d28505b-8175-40b2-8095-873914b40858" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/LeapJava.xml" afterPath="$PROJECT_DIR$/.idea/libraries/LeapJava.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MotionListener.java" afterPath="$PROJECT_DIR$/src/MotionListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StockInformation.java" afterPath="$PROJECT_DIR$/src/StockInformation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StockMenu.java" afterPath="$PROJECT_DIR$/src/StockMenu.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/StockScreen.java" afterPath="$PROJECT_DIR$/src/StockScreen.java" />
     </list>
     <ignored path="StockMotion.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,20 +26,7 @@
     <favorites_list name="StockMotion" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="MotionListener.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/MotionListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -65,11 +55,11 @@
         <option value="$PROJECT_DIR$/src/StockDoesNotExistException.java" />
         <option value="$PROJECT_DIR$/src/Date.java" />
         <option value="$PROJECT_DIR$/src/StockMotion.java" />
-        <option value="$PROJECT_DIR$/src/StockScreen.java" />
-        <option value="$PROJECT_DIR$/src/StockMenu.java" />
-        <option value="$PROJECT_DIR$/src/MotionListener.java" />
         <option value="$PROJECT_DIR$/src/ControlInformation.java" />
         <option value="$PROJECT_DIR$/src/Stock.java" />
+        <option value="$PROJECT_DIR$/src/MotionListener.java" />
+        <option value="$PROJECT_DIR$/src/StockMenu.java" />
+        <option value="$PROJECT_DIR$/src/StockScreen.java" />
         <option value="$PROJECT_DIR$/src/StockInformation.java" />
       </list>
     </option>
@@ -114,7 +104,7 @@
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/lib/LeapJava.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/StockScreen.java" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
   </component>
   <component name="RunManager" selected="Application.StockMotion">
@@ -406,7 +396,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="813" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
@@ -748,13 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ControlInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Stock.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -762,10 +745,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StockMenu.java">
+    <entry file="file://$PROJECT_DIR$/src/ControlInformation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -779,10 +763,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StockScreen.java">
+    <entry file="file://$PROJECT_DIR$/src/MotionListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="68" selection-start-line="17" selection-start-column="68" selection-end-line="17" selection-end-column="68" />
+        <state relative-caret-position="75">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -791,15 +775,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StockInformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="29" column="42" selection-start-line="29" selection-start-column="42" selection-end-line="29" selection-end-column="42" />
+        <state relative-caret-position="405">
+          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/MotionListener.java">
+    <entry file="file://$PROJECT_DIR$/src/StockMenu.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+        <state relative-caret-position="135">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StockScreen.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

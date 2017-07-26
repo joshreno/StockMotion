@@ -6,6 +6,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import yahoofinance.*;
+
 /**
  * Created by joshuareno on 7/17/17.
  */

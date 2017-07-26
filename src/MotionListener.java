@@ -3,6 +3,8 @@ package src;
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.State;
 
+import yahoofinance.*;
+
 /**
  * Created by joshuareno on 7/17/17.
  */
