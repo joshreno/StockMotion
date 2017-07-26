@@ -17,15 +17,13 @@ public class ControlInformation {
     private Label status;
 
     /**
-     * Sets the information for the button, hbox, imag, and label
+     * Sets the information for the button, hbox, image, and label
      */
     public ControlInformation() {
         hbox = new HBox();
-        Image addStockImage = new Image(
-                "File:./src/Images/blue-add-button.jpg");
-        Image deleteStockImage = new Image("File:./src/Images/yellow-exclude-button.jpg");
-
+        Image addStockImage = new Image("File:./src/Images/blue-add-button.jpg");
         addStock = new Button("Add stock", new ImageView(addStockImage));
+        Image deleteStockImage = new Image("File:./src/Images/yellow-exclude-button.jpg");
         deleteStock = new Button("Delete stock", new ImageView(deleteStockImage));
         status = new Label("Leap Motion Status: " + "");
         status.setStyle("-fx-background-color: #FFFFFF;");
@@ -78,7 +76,7 @@ public class ControlInformation {
                 break;
         }
         status.setText("Leap Motion Status: " + statusString);
-        hbox.getChildren().addAll(status);
+        hbox.getChildren().add(status);
     }
 
 }
