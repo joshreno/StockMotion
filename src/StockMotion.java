@@ -20,8 +20,6 @@ public class StockMotion extends Application{
     private static StockScreen stockScreen;
     private Controller controller;
     private MotionListener listener;
-    private Date stockStartDate;
-    private Date stockEndDate;
     private Scene scene;
     private Stage stage;
 
@@ -30,8 +28,6 @@ public class StockMotion extends Application{
      * @param primaryStage
      */
     public void start(Stage primaryStage) {
-        stockStartDate = new Date();
-        stockEndDate = new Date();
         controller = new Controller();
         listener = new MotionListener();
         stockScreen = new StockScreen();
@@ -71,7 +67,7 @@ public class StockMotion extends Application{
         });
         stockScreen.getControlInformation().getDeleteStock().setOnMouseClicked((event) -> {
             TextInputDialog dialog = new TextInputDialog("Ticker Symbol");
-            dialog.setTitle("Delet Stock");
+            dialog.setTitle("Delete Stock");
             dialog.setContentText("Enter ticker symbol");
             String string = dialog.showAndWait().toString();
             try {
