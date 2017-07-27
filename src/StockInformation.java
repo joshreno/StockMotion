@@ -10,7 +10,7 @@ import yahoofinance.*;
  */
 
 public class StockInformation {
-    private static Stock stock;
+    private static yahoofinance.Stock stock;
     private static double high;
     private static double low;
     private static double open;
@@ -25,16 +25,16 @@ public class StockInformation {
      * Constructor sets the information for a particular stock
      * @param stock
      */
-    public StockInformation(Stock stock) {
+    public StockInformation(yahoofinance.Stock stock) {
         if (stock != null) {
             this.stock = stock;
-            high = stock.getHigh();
-            low = stock.getLow();
-            open = stock.getOpen();
-            close = stock.getClose();
-            value = stock.getValue();
-            volume = stock.getVolume();
-            valueChange = stock.getValueChange();
+            high = stock.getQuote().getDayHigh().doubleValue();
+            low = stock.getQuote().getDayLow().doubleValue();
+            open = stock.getQuote().getOpen().doubleValue();
+            close = stock.getQuote().getPreviousClose().doubleValue();
+            value = stock.getQuote().getPrice().doubleValue();
+            volume = stock.getQuote().getVolume().intValue();
+            valueChange = stock.getQuote().getChange().doubleValue();
         }
     }
 
@@ -42,28 +42,28 @@ public class StockInformation {
      * Changes the stock and updates the instance variables
      * @param stock
      */
-    public static void setStockInformation(Stock stock) {
+    public static void setStockInformation(yahoofinance.Stock stock) {
         StockInformation.stock = stock;
-        high = stock.getHigh();
-        low = stock.getLow();
-        open = stock.getOpen();
-        close = stock.getClose();
-        value = stock.getValue();
-        volume = stock.getVolume();
-        valueChange = stock.getValueChange();
+        high = stock.getQuote().getDayHigh().doubleValue();
+        low = stock.getQuote().getDayLow().doubleValue();
+        open = stock.getQuote().getOpen().doubleValue();
+        close = stock.getQuote().getPreviousClose().doubleValue();
+        value = stock.getQuote().getPrice().doubleValue();
+        volume = stock.getQuote().getVolume().intValue();
+        valueChange = stock.getQuote().getChange().doubleValue();
     }
 
     /**
      * Updates the instance variables
      */
     public static void update() {
-        high = stock.getHigh();
-        low = stock.getLow();
-        open = stock.getOpen();
-        close = stock.getClose();
-        value = stock.getValue();
-        volume = stock.getVolume();
-        valueChange = stock.getValueChange();
+        high = stock.getQuote().getDayHigh().doubleValue();
+        low = stock.getQuote().getDayLow().doubleValue();
+        open = stock.getQuote().getOpen().doubleValue();
+        close = stock.getQuote().getPreviousClose().doubleValue();
+        value = stock.getQuote().getPrice().doubleValue();
+        volume = stock.getQuote().getVolume().intValue();
+        valueChange = stock.getQuote().getChange().doubleValue();
     }
 
     /**

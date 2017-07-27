@@ -14,7 +14,7 @@ import yahoofinance.*;
  */
 
 public class StockMenu {
-    private ArrayList<Stock> listOfStocks = new ArrayList<Stock>();
+    private ArrayList<yahoofinance.Stock> listOfStocks = new ArrayList<yahoofinance.Stock>();
     private ArrayList<Button> listOfButtons = new ArrayList<Button>();
     private VBox vbox = new VBox(0);
     private HBox hbox = new HBox(0);
@@ -26,19 +26,19 @@ public class StockMenu {
      * @param endDate
      */
     public void addStock(String symbol, Date startDate, Date endDate) throws IOException{
-        for (Stock stock : listOfStocks) {
+        for (yahoofinance.Stock stock : listOfStocks) {
             if (stock.getSymbol().equals(symbol)) {
                 return;
             }
         }
-        Stock stock = new Stock(symbol); // check this
+        yahoofinance.Stock stock = YahooFinance.get(symbol); // check this
         listOfStocks.add(stock);
-        if (stock.getChange()) {
-            Button button = new Button(stock.getSymbol() + ": " + stock.getValue());
+        if (stock.getQuote().getChange().intValue() > 0) {
+            Button button = new Button(stock.getSymbol() + ": " + stock.getQuote().getPrice());
             button.setStyle("-fx-background-color: #50f442;");
             listOfButtons.add(button);
         } else {
-            Button button = new Button(stock.getSymbol() + ": " + stock.getValue());
+            Button button = new Button(stock.getSymbol() + ": " + stock.getQuote().getPrice());
             button.setStyle("-fx-background-color: #ff0000;");
             listOfButtons.add(button);
         }
@@ -52,7 +52,7 @@ public class StockMenu {
      */
     public void deleteStock(String symbol) throws StockDoesNotExistException{
         boolean exists = false;
-        for (Stock stock : listOfStocks) {
+        for (yahoofinance.Stock stock : listOfStocks) {
             if (stock.getSymbol().equals(symbol)) {
                 listOfStocks.remove(stock);
                 exists = true;
@@ -73,8 +73,8 @@ public class StockMenu {
      * @param symbol
      * @return Stock
      */
-    public Stock getStock(String symbol) {
-        for (Stock stock : listOfStocks) {
+    public yahoofinance.Stock getStock(String symbol) {
+        for (yahoofinance.Stock stock : listOfStocks) {
             if (stock.getSymbol().equals(symbol)) {
                 return stock;
             }
@@ -92,7 +92,7 @@ public class StockMenu {
         }
         for (Button button: listOfButtons) {
             button.setOnMousePressed(e -> {
-                for (Stock stock: listOfStocks) {
+                for (yahoofinance.Stock stock: listOfStocks) {
                     if (stock.getSymbol().equals(button.getText())) {
                         StockInformation.setStockInformation(stock);
                         StockInformation.update();
