@@ -13,7 +13,7 @@ import yahoofinance.*;
  */
 
 public class StockScreen extends BorderPane{
-    private static Stock stock;
+    private static yahoofinance.Stock stock;
     private static VBox vboxList = new VBox();
     private static StockMenu stockMenu = new StockMenu();
     private static VBox vboxInfo = new VBox();
@@ -50,16 +50,16 @@ public class StockScreen extends BorderPane{
         hbox.getChildren().clear();
         hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());
         this.setTop(hbox);
-        stock.update();
-        this.setCenter(stock.getAreaChart());
-        stock.getAreaChart().setVisible(true);
+        //stock.update();
+        //this.setCenter(stock.getAreaChart());
+        //stock.getAreaChart().setVisible(true);
     }
 
     /**
      * Sets the stock variable
      * @param stock
      */
-    public static void setStock(Stock stock) {
+    public static void setStock(yahoofinance.Stock stock) {
         StockScreen.stock = stock;
     }
 

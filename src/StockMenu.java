@@ -22,10 +22,8 @@ public class StockMenu {
     /**
      * Adds the stock to the list
      * @param symbol
-     * @param startDate
-     * @param endDate
      */
-    public void addStock(String symbol, Date startDate, Date endDate) throws IOException{
+    public void addStock(String symbol) throws IOException{
         for (yahoofinance.Stock stock : listOfStocks) {
             if (stock.getSymbol().equals(symbol)) {
                 return;

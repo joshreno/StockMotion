@@ -60,7 +60,7 @@ public class StockMotion extends Application{
             String string = dialog.showAndWait().get();
 
             try {
-                stockScreen.getStockMenu().addStock(string, new Date(), new Date().getCurrentDay()); // this one
+                stockScreen.getStockMenu().addStock(string); // this one
                 stockScreen.update();
             } catch (IOException e) {
                 Alert alert = new Alert(AlertType.ERROR);
