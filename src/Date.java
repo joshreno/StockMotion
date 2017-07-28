@@ -24,6 +24,15 @@ public class Date {
     }
 
     /**
+     * Returns a Date from a Calendar
+     * @param calendar
+     * @return Date
+     */
+    public static Date Date(Calendar calendar) {
+        return new Date (calendar.DAY_OF_MONTH, calendar.YEAR, calendar.MONTH);
+    }
+
+    /**
      * Sets the day
      */
     public Date() {
