@@ -55,6 +55,9 @@ public class StockInformation {
      * Updates the instance variables
      */
     public static void update() {
+        if (stock == null) {
+            return;
+        }
         high = stock.getQuote().getDayHigh().doubleValue();
         low = stock.getQuote().getDayLow().doubleValue();
         open = stock.getQuote().getOpen().doubleValue();

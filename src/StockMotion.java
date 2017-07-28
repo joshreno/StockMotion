@@ -57,8 +57,9 @@ public class StockMotion extends Application{
 
             try {
                 stockScreen.getStockMenu().addStock(string); // this one
+                StockScreen.setStock(stockScreen.getStockMenu().getStock(string));
                 stockScreen.update();
-            } catch (IOException e) {
+            } catch (IOException | StockDoesNotExistException e) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle("Ticker Symbol Error");
                 alert.setContentText("The symbol you entered is not correct.");

@@ -2,6 +2,7 @@ package src;
 
 import java.io.IOException;
 
+import javafx.scene.chart.AreaChart;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -13,6 +14,7 @@ import yahoofinance.*;
  */
 
 public class StockScreen extends BorderPane{
+    private static AreaChart areaChart;
     private static yahoofinance.Stock stock;
     private static VBox vboxList = new VBox();
     private static StockMenu stockMenu = new StockMenu();
@@ -40,7 +42,7 @@ public class StockScreen extends BorderPane{
      * Updates the BorderPane nodes
      * @throws IOException
      */
-    public void update() throws IOException{
+    public void update() throws IOException, StockDoesNotExistException{
         vboxList.getChildren().clear();
         vboxList.getChildren().addAll(stockMenu.getListOfStocks());
         this.setLeft(vboxList);
@@ -50,9 +52,11 @@ public class StockScreen extends BorderPane{
         hbox.getChildren().clear();
         hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());
         this.setTop(hbox);
-        //stock.update();
-        //this.setCenter(stock.getAreaChart());
-        //stock.getAreaChart().setVisible(true);
+        if (stock != null) {
+            areaChart = StockChart.getAreaChart(stock);
+            this.setCenter(areaChart);
+            areaChart.setVisible(true);
+        }
     }
 
     /**

@@ -2,17 +2,19 @@ package src;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.ArrayList;
 
-import javafx.scene.chart.AreaChart;
-import javafx.scene.chart.XYChart;
+import javafx.scene.chart.*;
 
 /**
  * Created by joshuareno on 7/26/17.
  */
 public class StockChart {
-    private static AreaChart areaChart;
-    private static List<Date> listOfDates;
-    private static List<Double> listOfAdjClose;
+    private static AreaChart<Date, Double> areaChart;
+    private static NumberAxis yAxis;
+    private static CategoryAxis xAxis;
+    private static List<Date> listOfDates = new ArrayList<Date>();
+    private static List<Double> listOfAdjClose = new ArrayList<Double>();
     private static List<yahoofinance.histquotes.HistoricalQuote> listOfQuotes;
     private static XYChart.Series series;
 

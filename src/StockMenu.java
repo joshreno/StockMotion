@@ -88,6 +88,7 @@ public class StockMenu {
         if (listOfButtons.size() == 0) {
             return vbox;
         }
+        vbox = new VBox();
         for (Button button: listOfButtons) {
             button.setOnMousePressed(e -> {
                 for (yahoofinance.Stock stock: listOfStocks) {
@@ -98,7 +99,7 @@ public class StockMenu {
                     }
                 }
             });
-            vbox.getChildren().add(button);
+            vbox.getChildren().addAll(button);
         }
         return vbox;
     }
@@ -108,6 +109,7 @@ public class StockMenu {
      * @return HBox
      */
     public HBox getListOfExchanges() {
+        hbox = new HBox();
         for (Button button: listOfButtons) {
             hbox.getChildren().add(button);
         }
