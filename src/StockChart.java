@@ -30,11 +30,13 @@ public class StockChart {
         series = new XYChart.Series();
         series.setName(stock.getSymbol());
         for (yahoofinance.histquotes.HistoricalQuote histQuote: listOfQuotes) {
-            Double close = histQuote.getAdjClose().doubleValue();
-            listOfAdjClose.add(close);
             Date date = Date.Date(histQuote.getDate());
-            listOfStringDates.add(date.toString());
-            series.getData().add(new XYChart.Data(date.toString(), close));
+            if (!listOfStringDates.contains(date.toString())) {
+                Double close = histQuote.getAdjClose().doubleValue();
+                listOfAdjClose.add(close);
+                listOfStringDates.add(date.toString());
+                series.getData().add(new XYChart.Data(date.toString(), close));
+            }
         }
         xAxis = new CategoryAxis(FXCollections.observableArrayList(listOfStringDates));
         yAxis = new NumberAxis(0, stock.getQuote().getPrice().doubleValue(), stock.getQuote().getPrice().doubleValue()/100);
