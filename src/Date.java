@@ -1,5 +1,7 @@
 package src;
 
+import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
+
 import java.util.Calendar;
 
 /**
@@ -29,7 +31,7 @@ public class Date {
      * @return Date
      */
     public static Date Date(Calendar calendar) {
-        return new Date (calendar.DAY_OF_MONTH, calendar.YEAR, calendar.MONTH);
+        return new Date (calendar.get(5), calendar.get(1), calendar.get(2));
     }
 
     /**

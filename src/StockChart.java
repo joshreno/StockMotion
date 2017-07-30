@@ -1,6 +1,7 @@
 package src;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -16,14 +17,20 @@ public class StockChart {
     private static AreaChart<String, Double> areaChart;
     private static NumberAxis yAxis;
     private static CategoryAxis xAxis;
+    private static double max;
     private static List<Double> listOfAdjClose = new ArrayList<Double>();
     private static List<String> listOfStringDates = new ArrayList<String>();
     private static List<yahoofinance.histquotes.HistoricalQuote> listOfQuotes;
     private static XYChart.Series series;
 
-    public static AreaChart getAreaChart(yahoofinance.Stock stock) throws StockDoesNotExistException{
+    public static AreaChart getAreaChart(yahoofinance.Stock stock) throws StockDoesNotExistException, IOException{
+        Calendar from = Calendar.getInstance();
+        from.add(Calendar.YEAR, -1);
+        yahoofinance.Stock stockInterval = yahoofinance.YahooFinance.get(stock.getSymbol(), from,
+                Calendar.getInstance(), yahoofinance.histquotes.Interval.DAILY);
         try {
-            listOfQuotes = stock.getHistory();
+            listOfQuotes = stockInterval.getHistory();
+            System.out.println(listOfQuotes);
         } catch (IOException e) {
             throw new StockDoesNotExistException("");
         }
@@ -32,14 +39,18 @@ public class StockChart {
         for (yahoofinance.histquotes.HistoricalQuote histQuote: listOfQuotes) {
             Date date = Date.Date(histQuote.getDate());
             if (!listOfStringDates.contains(date.toString())) {
+                System.out.println(date.toString() + " 111111");
                 Double close = histQuote.getAdjClose().doubleValue();
+                if (close > max) {
+                    max = close;
+                }
                 listOfAdjClose.add(close);
                 listOfStringDates.add(date.toString());
                 series.getData().add(new XYChart.Data(date.toString(), close));
             }
         }
         xAxis = new CategoryAxis(FXCollections.observableArrayList(listOfStringDates));
-        yAxis = new NumberAxis(0, stock.getQuote().getPrice().doubleValue(), stock.getQuote().getPrice().doubleValue()/100);
+        yAxis = new NumberAxis(0, max, stockInterval.getQuote().getPrice().doubleValue()/100);
         areaChart = new AreaChart<String, Double>(xAxis, (Axis) yAxis);
         areaChart.getData().addAll(series);
         return StockChart.areaChart;

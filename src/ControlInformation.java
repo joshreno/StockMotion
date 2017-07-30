@@ -21,9 +21,9 @@ public class ControlInformation {
      */
     public ControlInformation() {
         hbox = new HBox();
-        Image addStockImage = new Image("File:./src/Images/blue-add-button.jpg");
+        Image addStockImage = new Image("File:./src/Images/blue-add-button.jpg", 20, 20, false, true);
         addStock = new Button("Add stock", new ImageView(addStockImage));
-        Image deleteStockImage = new Image("File:./src/Images/yellow-exclude-button.jpg");
+        Image deleteStockImage = new Image("File:./src/Images/yellow-exclude-button.jpg", 20, 20, false, true);
         deleteStock = new Button("Delete stock", new ImageView(deleteStockImage));
         status = new Label("Leap Motion Status: " + "");
         status.setStyle("-fx-background-color: #FFFFFF;");
