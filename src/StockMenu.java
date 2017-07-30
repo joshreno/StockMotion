@@ -29,16 +29,20 @@ public class StockMenu {
                 return;
             }
         }
-        yahoofinance.Stock stock = YahooFinance.get(symbol); // check this
+        yahoofinance.Stock stock = YahooFinance.get(symbol);
         listOfStocks.add(stock);
-        if (stock.getQuote().getChange().intValue() > 0) {
-            Button button = new Button(stock.getSymbol() + ": " + stock.getQuote().getPrice());
-            button.setStyle("-fx-background-color: #50f442;");
-            listOfButtons.add(button);
-        } else {
-            Button button = new Button(stock.getSymbol() + ": " + stock.getQuote().getPrice());
-            button.setStyle("-fx-background-color: #ff0000;");
-            listOfButtons.add(button);
+        try {
+            if (stock.getQuote().getChange().doubleValue() > 0) {
+                Button button = new Button(stock.getSymbol() + ": " + stock.getQuote().getPrice());
+                button.setStyle("-fx-background-color: #50f442;");
+                listOfButtons.add(button);
+            } else {
+                Button button = new Button(stock.getSymbol() + ": " + stock.getQuote().getPrice());
+                button.setStyle("-fx-background-color: #ff0000;");
+                listOfButtons.add(button);
+            }
+        } catch (NullPointerException e) {
+            throw new IOException("");
         }
 
         // check if stock exists or not ->  button

@@ -28,6 +28,7 @@ public class ControlInformation {
         status = new Label("Leap Motion Status: " + "");
         status.setStyle("-fx-background-color: #FFFFFF;");
         hbox.getChildren().addAll(addStock, deleteStock, status);
+        setStatusString(LeapStatus.EXITED);
     }
 
     /**

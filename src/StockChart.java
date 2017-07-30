@@ -30,7 +30,6 @@ public class StockChart {
                 Calendar.getInstance(), yahoofinance.histquotes.Interval.DAILY);
         try {
             listOfQuotes = stockInterval.getHistory();
-            System.out.println(listOfQuotes);
         } catch (IOException e) {
             throw new StockDoesNotExistException("");
         }
@@ -39,7 +38,6 @@ public class StockChart {
         for (yahoofinance.histquotes.HistoricalQuote histQuote: listOfQuotes) {
             Date date = Date.Date(histQuote.getDate());
             if (!listOfStringDates.contains(date.toString())) {
-                System.out.println(date.toString() + " 111111");
                 Double close = histQuote.getAdjClose().doubleValue();
                 if (close > max) {
                     max = close;
@@ -50,9 +48,15 @@ public class StockChart {
             }
         }
         xAxis = new CategoryAxis(FXCollections.observableArrayList(listOfStringDates));
-        yAxis = new NumberAxis(0, max, stockInterval.getQuote().getPrice().doubleValue()/100);
+        yAxis = new NumberAxis(0, max * 1.1, stockInterval.getQuote().getPrice().doubleValue()/100);
         areaChart = new AreaChart<String, Double>(xAxis, (Axis) yAxis);
         areaChart.getData().addAll(series);
+        if (stock.getQuote().getChange().doubleValue() > 0) {
+            areaChart.getStylesheets().add("src/Chart1.css");
+        } else {
+            areaChart.getStylesheets().add("src/Chart2.css");
+        }
+
         return StockChart.areaChart;
     }
 }
