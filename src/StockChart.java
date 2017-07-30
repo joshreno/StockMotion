@@ -52,9 +52,9 @@ public class StockChart {
         areaChart = new AreaChart<String, Double>(xAxis, (Axis) yAxis);
         areaChart.getData().addAll(series);
         if (stock.getQuote().getChange().doubleValue() > 0) {
-            areaChart.getStylesheets().add("src/Chart1.css");
+            areaChart.getStylesheets().add("src/lib/Chart1.css");
         } else {
-            areaChart.getStylesheets().add("src/Chart2.css");
+            areaChart.getStylesheets().add("src/lib/Chart2.css");
         }
 
         return StockChart.areaChart;
