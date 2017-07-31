@@ -65,6 +65,7 @@ public class StockScreen extends BorderPane{
      */
     public static void setStock(yahoofinance.Stock stock) {
         StockScreen.stock = stock;
+        StockInformation.setStockInformation(stock);
     }
 
     /**

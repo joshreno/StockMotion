@@ -10,7 +10,7 @@ import yahoofinance.*;
  */
 
 public class MotionListener extends Listener{
-    private LeapStatus status;
+    private static LeapStatus status;
 
     /**
      * Sets information from Leap Motion Controller
@@ -86,7 +86,7 @@ public class MotionListener extends Listener{
      * Returns the status of the Leap Motion Controller
      * @return Status
      */
-    public LeapStatus getStatus() {
+    public static LeapStatus getStatus() {
         return status;
     }
 }
