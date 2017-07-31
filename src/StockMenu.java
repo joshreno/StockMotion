@@ -2,20 +2,19 @@ package src;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-
-import yahoofinance.*;
 
 /**
  * Created by joshuareno on 7/17/17.
  */
 
 public class StockMenu {
-    private ArrayList<yahoofinance.Stock> listOfStocks = new ArrayList<yahoofinance.Stock>();
-    private ArrayList<Button> listOfButtons = new ArrayList<Button>();
+    private List<yahoofinance.Stock> listOfStocks = new ArrayList<yahoofinance.Stock>();
+    private List<Button> listOfButtons = new ArrayList<Button>();
     private VBox vbox = new VBox(0);
     private HBox hbox = new HBox(0);
 
@@ -29,7 +28,7 @@ public class StockMenu {
                 return;
             }
         }
-        yahoofinance.Stock stock = YahooFinance.get(symbol);
+        yahoofinance.Stock stock = yahoofinance.YahooFinance.get(symbol);
         listOfStocks.add(stock);
         try {
             if (stock.getQuote().getChange().doubleValue() > 0) {
@@ -106,6 +105,10 @@ public class StockMenu {
             vbox.getChildren().addAll(button);
         }
         return vbox;
+    }
+
+    public List<Button> getListOfButtons() {
+        return listOfButtons;
     }
 
     /**

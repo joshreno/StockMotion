@@ -56,7 +56,6 @@ public class StockChart {
         } else {
             areaChart.getStylesheets().add("src/lib/Chart2.css");
         }
-
         return StockChart.areaChart;
     }
 }

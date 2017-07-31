@@ -56,7 +56,6 @@ public class StockInformation {
      */
     public static void update() {
         if (stock == null) {
-            System.out.println("Stock is null");
             return;
         }
         high = stock.getQuote().getDayHigh().doubleValue();
