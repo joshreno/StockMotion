@@ -3,6 +3,7 @@ package src;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.scene.chart.AreaChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextInputDialog;
@@ -54,7 +55,6 @@ public class StockMotion extends Application{
             dialog.setTitle("Add Stock");
             dialog.setContentText("Enter ticker symbol");
             String string = dialog.showAndWait().get();
-
             try {
                 stockScreen.getStockMenu().addStock(string); // this one
                 StockScreen.setStock(stockScreen.getStockMenu().getStock(string));

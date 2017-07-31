@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.chart.*;
 
 /**
@@ -18,12 +17,17 @@ public class StockChart {
     private static NumberAxis yAxis;
     private static CategoryAxis xAxis;
     private static double max;
-    private static List<Double> listOfAdjClose = new ArrayList<Double>();
-    private static List<String> listOfStringDates = new ArrayList<String>();
+    private static double min;
+    private static List<Double> listOfAdjClose;
+    private static List<String> listOfStringDates;
     private static List<yahoofinance.histquotes.HistoricalQuote> listOfQuotes;
     private static XYChart.Series series;
 
     public static AreaChart getAreaChart(yahoofinance.Stock stock) throws StockDoesNotExistException, IOException{
+        max = 0;
+        min = 0;
+        listOfAdjClose = new ArrayList<Double>();
+        listOfStringDates = new ArrayList<String>();
         Calendar from = Calendar.getInstance();
         from.add(Calendar.YEAR, -1);
         yahoofinance.Stock stockInterval = yahoofinance.YahooFinance.get(stock.getSymbol(), from,
@@ -42,13 +46,19 @@ public class StockChart {
                 if (close > max) {
                     max = close;
                 }
+                if (min == 0) {
+                    min = close;
+                }
+                if (close < min) {
+                    min = close;
+                }
                 listOfAdjClose.add(close);
                 listOfStringDates.add(date.toString());
                 series.getData().add(new XYChart.Data(date.toString(), close));
             }
         }
         xAxis = new CategoryAxis(FXCollections.observableArrayList(listOfStringDates));
-        yAxis = new NumberAxis(0, max * 1.1, stockInterval.getQuote().getPrice().doubleValue()/100);
+        yAxis = new NumberAxis(min * 0.9, max * 1.1, stockInterval.getQuote().getPrice().doubleValue()/100);
         areaChart = new AreaChart<String, Double>(xAxis, (Axis) yAxis);
         areaChart.getData().addAll(series);
         if (stock.getQuote().getChange().doubleValue() > 0) {

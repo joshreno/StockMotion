@@ -12,7 +12,7 @@ import javafx.scene.layout.VBox;
  */
 
 public class StockScreen extends BorderPane{
-    private static AreaChart areaChart;
+    private AreaChart areaChart;
     private static yahoofinance.Stock stock;
     private static VBox vboxList = new VBox();
     private static StockMenu stockMenu = new StockMenu();
@@ -51,9 +51,20 @@ public class StockScreen extends BorderPane{
         hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());
         this.setTop(hbox);
         if (stock != null) {
-            areaChart = StockChart.getAreaChart(stock);
-            this.setCenter(areaChart);
-            areaChart.setVisible(true);
+            if (areaChart == null) {
+                System.out.println("1");
+                areaChart = StockChart.getAreaChart(stock);
+                System.out.println(areaChart);
+                this.setCenter(areaChart);
+                areaChart.setVisible(true);
+            } else {
+                areaChart.setVisible(false);
+                areaChart = StockChart.getAreaChart(stock);
+                this.setCenter(areaChart);
+                areaChart.setVisible(true);
+                System.out.println(this.getCenter());
+                System.out.println(areaChart);
+            }
         }
     }
 
