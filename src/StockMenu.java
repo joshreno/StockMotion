@@ -43,7 +43,7 @@ public class StockMenu {
         } catch (NullPointerException e) {
             throw new IOException("");
         }
-
+        System.out.println(symbol);
         // check if stock exists or not ->  button
     }
 

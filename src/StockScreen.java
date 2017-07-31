@@ -3,6 +3,7 @@ package src;
 import java.io.IOException;
 
 import javafx.scene.chart.AreaChart;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -27,8 +28,15 @@ public class StockScreen extends BorderPane{
      * Constructor sets the BorderPane nodes
      */
     public StockScreen() {
+        this.setMinSize(0, 0);
         vboxList.getChildren().addAll(stockMenu.getListOfStocks());
         controlBox.getChildren().addAll(controlInformation.getRootNode());
+        try {
+            setExchanges();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());
         this.setTop(hbox);
         this.setLeft(vboxList);
         this.setRight(vboxInfo);
@@ -51,21 +59,17 @@ public class StockScreen extends BorderPane{
         hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());
         this.setTop(hbox);
         if (stock != null) {
-            if (areaChart == null) {
-                System.out.println("1");
-                areaChart = StockChart.getAreaChart(stock);
-                System.out.println(areaChart);
-                this.setCenter(areaChart);
-                areaChart.setVisible(true);
-            } else {
-                areaChart.setVisible(false);
-                areaChart = StockChart.getAreaChart(stock);
-                this.setCenter(areaChart);
-                areaChart.setVisible(true);
-                System.out.println(this.getCenter());
-                System.out.println(areaChart);
-            }
+            areaChart = StockChart.getAreaChart(stock);
+            this.setCenter(areaChart);
+            areaChart.setVisible(true);
         }
+    }
+
+    public void setExchanges() throws IOException{
+        exchangesMenu.addStock("^IXIC");
+        exchangesMenu.addStock("^GSPC");
+        exchangesMenu.addStock("^FTSE");
+        exchangesMenu.addStock("^N225");
     }
 
     /**

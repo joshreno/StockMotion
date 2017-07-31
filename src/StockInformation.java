@@ -42,6 +42,12 @@ public class StockInformation {
      */
     public static void setStockInformation(yahoofinance.Stock stock) {
         StockInformation.stock = stock;
+        if (stock == null || stock.getQuote() == null || stock.getQuote().getDayHigh() == null
+                || stock.getQuote().getDayLow() == null || stock.getQuote().getOpen() == null
+                || stock.getQuote().getPreviousClose() == null || stock.getQuote().getPrice() == null
+                || stock.getQuote().getVolume() == null || stock.getQuote().getChange() == null) {
+            return;
+        }
         high = stock.getQuote().getDayHigh().doubleValue();
         low = stock.getQuote().getDayLow().doubleValue();
         open = stock.getQuote().getOpen().doubleValue();
@@ -55,7 +61,10 @@ public class StockInformation {
      * Updates the instance variables
      */
     public static void update() {
-        if (stock == null) {
+        if (stock == null || stock.getQuote() == null || stock.getQuote().getDayHigh() == null
+                || stock.getQuote().getDayLow() == null || stock.getQuote().getOpen() == null
+                || stock.getQuote().getPreviousClose() == null || stock.getQuote().getPrice() == null
+                || stock.getQuote().getVolume() == null || stock.getQuote().getChange() == null) {
             return;
         }
         high = stock.getQuote().getDayHigh().doubleValue();

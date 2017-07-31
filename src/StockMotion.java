@@ -8,7 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.stage.*;
 
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.State;
@@ -33,6 +33,8 @@ public class StockMotion extends Application{
         listener = new MotionListener();
         stockScreen = new StockScreen();
         stage = primaryStage;
+        stage.setWidth(javafx.stage.Screen.getPrimary().getVisualBounds().getWidth());
+        stage.setHeight(javafx.stage.Screen.getPrimary().getVisualBounds().getHeight());
         stage.setScene(startStockMotion());
         stage.show();
     }
