@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -31,6 +32,9 @@ public class StockMenu {
             }
         }
         yahoofinance.Stock stock = yahoofinance.YahooFinance.get(symbol);
+        if (stock.getQuote() == null) {
+            throw new IOException("");
+        }
         listOfStocks.add(stock);
         Button button;
         switch (symbol) {
@@ -46,29 +50,29 @@ public class StockMenu {
                 break;
             case "^N100" : button = new Button("Euro100 (EU): " + stock.getQuote().getPrice());
                 break;
-            case "^AXJO" : button = new Button("AXJO (AUS): " + stock.getQuote().getPrice() + "   ");
+            case "^AXJO" : button = new Button("AXJO (Aus): " + stock.getQuote().getPrice() + "");
                 break;
-            case "^GSPTSE" : button = new Button("Toronto (CA): " + stock.getQuote().getPrice());
+            case "^GSPTSE" : button = new Button("Toronto (Can): " + stock.getQuote().getPrice());
                 break;
-            case "^FCHI" : button = new Button("CAC40 (FR): " + stock.getQuote().getPrice());
+            case "^FCHI" : button = new Button("CAC40 (Fr): " + stock.getQuote().getPrice());
                 break;
             case "^HSI" : button = new Button("Hang Seng (HK): " + stock.getQuote().getPrice());
                 break;
-            case "^TA100" : button = new Button("TA-125 (ISR): " + stock.getQuote().getPrice());
+            case "^TA100" : button = new Button("TA-125 (Isr): " + stock.getQuote().getPrice());
                 break;
             case "^NZ50" : button = new Button("NZX 50 (NZ): " + stock.getQuote().getPrice());
                 break;
-            case "^MXX" : button = new Button("IPC (MEX): " + stock.getQuote().getPrice());
+            case "^MXX" : button = new Button("IPC (Mex): " + stock.getQuote().getPrice());
                 break;
-            case "MICEXINDEXCF.ME" : button = new Button("MICEX (RUS): " + stock.getQuote().getPrice());
+            case "MICEXINDEXCF.ME" : button = new Button("MICEX (Rus): " + stock.getQuote().getPrice());
                 break;
             case "^KS11" : button = new Button("KOSPI (Korea): " + stock.getQuote().getPrice());
                 break;
-            case "^GDAXI" : button = new Button("XETRA (GER): " + stock.getQuote().getPrice());
+            case "^GDAXI" : button = new Button("XETRA (Ger): " + stock.getQuote().getPrice());
                 break;
-            case "^JKSE" : button = new Button("Jakarta (INDON): " + stock.getQuote().getPrice());
+            case "^JKSE" : button = new Button("Jakarta (Indon): " + stock.getQuote().getPrice());
                 break;
-            case "^MERV" : button = new Button("Merval (ARG): " + stock.getQuote().getPrice());
+            case "^MERV" : button = new Button("Merval (Argen): " + stock.getQuote().getPrice());
                 break;
             default: button = new Button(stock.getSymbol() + ": " + stock.getQuote().getPrice());
         }
@@ -76,6 +80,9 @@ public class StockMenu {
         rectangle.setHeight(1);
         rectangle.setWidth(1);
         button.setShape(rectangle);
+        if (stock.getQuote().getChange() == null) {
+            throw new IOException("");
+        }
         if (stock.getQuote().getChange().doubleValue() > 0) {
             button.setStyle("-fx-background-color: #50f442;");
             listOfButtons.add(button);
@@ -130,7 +137,9 @@ public class StockMenu {
             return vbox;
         }
         vbox = new VBox();
-        vbox.getChildren().addAll(new Label("Stocks: "));
+        Label label = new Label("Stocks: ");
+        label.setTextFill(Color.web("#ffffff"));
+        vbox.getChildren().addAll(label);
         for (Button button: listOfButtons) {
             vbox.getChildren().addAll(button);
         }

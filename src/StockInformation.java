@@ -2,6 +2,7 @@ package src;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 
 /**
  * Created by joshuareno on 7/17/17.
@@ -83,12 +84,19 @@ public class StockInformation {
         update();
         vbox.getChildren().clear();
         Label highLabel = new Label("High: " + high);
+        highLabel.setTextFill(Color.web("#ffffff"));
         Label lowLabel = new Label("Low: " + low);
+        lowLabel.setTextFill(Color.web("#ffffff"));
         Label openLabel = new Label("Open: " + open);
+        openLabel.setTextFill(Color.web("#ffffff"));
         Label closeLabel = new Label("Close: " + close);
+        closeLabel.setTextFill(Color.web("#ffffff"));
         Label valueLabel = new Label("Value: " + value);
+        valueLabel.setTextFill(Color.web("#ffffff"));
         Label volumeLabel = new Label("Volume: " + volume);
+        volumeLabel.setTextFill(Color.web("#ffffff"));
         Label valueChangeLabel = new Label("Value Change: " + valueChange);
+        valueChangeLabel.setTextFill(Color.web("#ffffff"));
         vbox.getChildren().addAll(
                 highLabel,
                 lowLabel,

@@ -71,7 +71,6 @@ public class StockMotion extends Application{
                 int space = button.getText().indexOf(":");
                 System.out.println(button.getText().substring(0, space));
                 if (button.getText().substring(0, space).equals(string)) {
-                    System.out.println("hi1");
                     button.setOnMouseClicked((e) -> {
                         StockScreen.setStock(stockScreen.getStockMenu().getStock(string));
                         try {
