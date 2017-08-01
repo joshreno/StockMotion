@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 
 /**
  * Created by joshuareno on 7/17/17.
@@ -30,21 +31,51 @@ public class StockMenu {
         }
         yahoofinance.Stock stock = yahoofinance.YahooFinance.get(symbol);
         listOfStocks.add(stock);
-        try {
-            if (stock.getQuote().getChange().doubleValue() > 0) {
-                Button button = new Button(stock.getSymbol() + ": " + stock.getQuote().getPrice());
-                button.setStyle("-fx-background-color: #50f442;");
-                listOfButtons.add(button);
-            } else {
-                Button button = new Button(stock.getSymbol() + ": " + stock.getQuote().getPrice());
-                button.setStyle("-fx-background-color: #ff0000;");
-                listOfButtons.add(button);
-            }
-        } catch (NullPointerException e) {
-            throw new IOException("");
+        Button button;
+        switch (symbol) {
+            case "^IXIC" : button = new Button("NASDAQ (US): " + stock.getQuote().getPrice());
+                break;
+            case "^GSPC" : button = new Button("S&P500 (US): " + stock.getQuote().getPrice());
+                break;
+            case "^FTSE" : button = new Button("FTSE (UK): " + stock.getQuote().getPrice());
+                break;
+            case "^N225" : button = new Button("Nikkei (JP): " + stock.getQuote().getPrice());
+                break;
+            case "^NYA" : button = new Button("NYSE (US): " + stock.getQuote().getPrice());
+                break;
+            case "^N100" : button = new Button("Euro100 (EU): " + stock.getQuote().getPrice());
+                break;
+            case "^AXJO" : button = new Button("AXJO (AUS): " + stock.getQuote().getPrice() + "  ");
+                break;
+            case "^GSPTSE" : button = new Button("Toronto (CA): " + stock.getQuote().getPrice());
+                break;
+            case "^FCHI" : button = new Button("CAC40 (FR): " + stock.getQuote().getPrice());
+                break;
+            case "^HSI" : button = new Button("Hang Seng (HK): " + stock.getQuote().getPrice());
+                break;
+            case "^TA100" : button = new Button("TA-125 (ISR): " + stock.getQuote().getPrice());
+                break;
+            case "^NZ50" : button = new Button("NZX 50 (NZ): " + stock.getQuote().getPrice());
+                break;
+            case "^MXX" : button = new Button("IPC (MEX): " + stock.getQuote().getPrice());
+                break;
+            case "MICEXINDEXCF.ME" : button = new Button("MICEX (RUS): " + stock.getQuote().getPrice());
+                break;
+            case "^KS11" : button = new Button("KOSPI (Korea): " + stock.getQuote().getPrice());
+                break;
+            default: button = new Button(stock.getSymbol() + ": " + stock.getQuote().getPrice());
         }
-        System.out.println(symbol);
-        // check if stock exists or not ->  button
+        Rectangle rectangle = new Rectangle();
+        rectangle.setHeight(1);
+        rectangle.setWidth(1);
+        button.setShape(rectangle);
+        if (stock.getQuote().getChange().doubleValue() > 0) {
+            button.setStyle("-fx-background-color: #50f442;");
+            listOfButtons.add(button);
+        } else {
+            button.setStyle("-fx-background-color: #ff0000;");
+            listOfButtons.add(button);
+        }
     }
 
     /**

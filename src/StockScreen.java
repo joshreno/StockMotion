@@ -3,7 +3,6 @@ package src;
 import java.io.IOException;
 
 import javafx.scene.chart.AreaChart;
-import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,8 +20,11 @@ public class StockScreen extends BorderPane{
     private static StockInformation info = new StockInformation(null);
     private static HBox hbox = new HBox();
     private static StockMenu exchangesMenu = new StockMenu();
+    private static HBox secondHBox = new HBox();
+    private static StockMenu exchangesMenuSecond = new StockMenu();
     private static ControlInformation controlInformation = new ControlInformation();
     private static HBox controlBox = new HBox();
+    private BorderPane borderPane = new BorderPane();
 
     /**
      * Constructor sets the BorderPane nodes
@@ -37,7 +39,10 @@ public class StockScreen extends BorderPane{
             e.printStackTrace();
         }
         hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());
-        this.setTop(hbox);
+        secondHBox.getChildren().addAll(exchangesMenuSecond.getListOfExchanges());
+        borderPane.setTop(hbox);
+        borderPane.setBottom(secondHBox);
+        this.setTop(borderPane);
         this.setLeft(vboxList);
         this.setRight(vboxInfo);
         this.setCenter(new VBox());
@@ -55,9 +60,6 @@ public class StockScreen extends BorderPane{
         vboxInfo.getChildren().clear();
         vboxInfo.getChildren().addAll(info.getRootNode());
         this.setRight(vboxInfo);
-        hbox.getChildren().clear();
-        hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());
-        this.setTop(hbox);
         if (stock != null) {
             areaChart = StockChart.getAreaChart(stock);
             this.setCenter(areaChart);
@@ -68,8 +70,19 @@ public class StockScreen extends BorderPane{
     public void setExchanges() throws IOException{
         exchangesMenu.addStock("^IXIC");
         exchangesMenu.addStock("^GSPC");
-        exchangesMenu.addStock("^FTSE");
+        exchangesMenu.addStock("^NYA");
         exchangesMenu.addStock("^N225");
+        exchangesMenu.addStock("^FTSE");
+        exchangesMenu.addStock("MICEXINDEXCF.ME");
+        exchangesMenu.addStock("^N100");
+        exchangesMenu.addStock("^HSI");
+        exchangesMenu.addStock("^AXJO");
+        exchangesMenuSecond.addStock("^GSPTSE");
+        exchangesMenuSecond.addStock("^FCHI");
+        exchangesMenuSecond.addStock("^TA100");
+        exchangesMenuSecond.addStock("^NZ50");
+        exchangesMenuSecond.addStock("^MXX");
+        exchangesMenuSecond.addStock("^KS11");
     }
 
     /**
