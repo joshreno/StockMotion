@@ -46,15 +46,10 @@ public class Stock {
         time = Instant.now().getEpochSecond();
         int unixDate1 = 0;
         int unixDate2 = Math.toIntExact(time);
-        System.out.println(unixDate2);
         address = "https://query1.finance.yahoo.com/v7/finance/download/"
                 + symbol.toString() +  "?period1=" + Integer.toString(unixDate1) + "&period2="
                 + Integer.toString(unixDate2) + "&interval=1d&events=history&crumb=aDdGQcp1f2A";
-        System.out.println(address);
         url = new URL(address);
-
-        //
-        System.out.println("hi1");
         try {
             urlConnection = url.openConnection();
             urlConnection.setDoInput(true);
@@ -62,12 +57,7 @@ public class Stock {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        // this is a problem -> something is null which leads to a null pointer exceptions
-
-        System.out.println("hi2");
         arrayOfData = new ArrayList<ArrayList<String>>();
-        System.out.println("hi3");
         String buffLine = "";
         buff = new BufferedReader(inStream);
         while ((buffLine = buff.readLine()) != null) {

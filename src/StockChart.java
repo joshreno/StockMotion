@@ -2,6 +2,7 @@ package src;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -18,12 +19,16 @@ public class StockChart {
     private static CategoryAxis xAxis;
     private static double max;
     private static double min;
+    private static HashMap<yahoofinance.Stock, AreaChart<String, Double>> map = new HashMap<yahoofinance.Stock, AreaChart<String, Double>>();
     private static List<Double> listOfAdjClose;
     private static List<String> listOfStringDates;
     private static List<yahoofinance.histquotes.HistoricalQuote> listOfQuotes;
     private static XYChart.Series series;
 
     public static AreaChart getAreaChart(yahoofinance.Stock stock) throws StockDoesNotExistException, IOException{
+        if (map.containsKey(stock)) {
+            return map.get(stock);
+        }
         max = 0;
         min = 0;
         listOfAdjClose = new ArrayList<Double>();
@@ -66,6 +71,7 @@ public class StockChart {
         } else {
             areaChart.getStylesheets().add("src/lib/Chart2.css");
         }
+        map.put(stock, StockChart.areaChart);
         return StockChart.areaChart;
     }
 }

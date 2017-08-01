@@ -3,9 +3,9 @@ package src;
 import java.io.IOException;
 
 import javafx.application.Application;
-import javafx.scene.chart.AreaChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.Scene;
 import javafx.stage.*;
@@ -66,6 +66,24 @@ public class StockMotion extends Application{
                 alert.setTitle("Ticker Symbol Error");
                 alert.setContentText("The symbol you entered is not correct.");
                 alert.showAndWait();
+            }
+            for (Button button: stockScreen.getStockMenu().getListOfButtons()) {
+                int space = button.getText().indexOf(":");
+                System.out.println(button.getText().substring(0, space));
+                if (button.getText().substring(0, space).equals(string)) {
+                    System.out.println("hi1");
+                    button.setOnMouseClicked((e) -> {
+                        StockScreen.setStock(stockScreen.getStockMenu().getStock(string));
+                        try {
+                            stockScreen.update();
+                        } catch (IOException | StockDoesNotExistException exception) {
+                            Alert alert = new Alert(AlertType.ERROR);
+                            alert.setTitle("Ticker Symbol Error");
+                            alert.setContentText("The symbol you entered is not correct.");
+                            alert.showAndWait();
+                        }
+                    });
+                }
             }
         });
         stockScreen.getControlInformation().getDeleteStock().setOnMouseClicked((event) -> {

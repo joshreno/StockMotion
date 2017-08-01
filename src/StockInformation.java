@@ -18,7 +18,6 @@ public class StockInformation {
     private static double valueChange;
     private static VBox vbox = new VBox();
 
-
     /**
      * Constructor sets the information for a particular stock
      * @param stock

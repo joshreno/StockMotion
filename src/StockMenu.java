@@ -132,20 +132,15 @@ public class StockMenu {
         vbox = new VBox();
         vbox.getChildren().addAll(new Label("Stocks: "));
         for (Button button: listOfButtons) {
-            button.setOnMousePressed(e -> {
-                for (yahoofinance.Stock stock: listOfStocks) {
-                    if (stock.getSymbol().equals(button.getText())) {
-                        StockInformation.setStockInformation(stock);
-                        StockInformation.update();
-                        StockScreen.setStock(stock);
-                    }
-                }
-            });
             vbox.getChildren().addAll(button);
         }
         return vbox;
     }
 
+    /**
+     * Returns a list of buttons with stock symbols and values.
+     * @return List<Button>
+     */
     public List<Button> getListOfButtons() {
         return listOfButtons;
     }

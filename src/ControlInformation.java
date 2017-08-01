@@ -83,5 +83,4 @@ public class ControlInformation {
         status.setText("Leap Motion Status: " + statusString);
         hbox.getChildren().add(status);
     }
-
 }
