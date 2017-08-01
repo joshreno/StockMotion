@@ -45,7 +45,7 @@ public class StockMenu {
                 break;
             case "^N100" : button = new Button("Euro100 (EU): " + stock.getQuote().getPrice());
                 break;
-            case "^AXJO" : button = new Button("AXJO (AUS): " + stock.getQuote().getPrice() + "  ");
+            case "^AXJO" : button = new Button("AXJO (AUS): " + stock.getQuote().getPrice() + "   ");
                 break;
             case "^GSPTSE" : button = new Button("Toronto (CA): " + stock.getQuote().getPrice());
                 break;
@@ -62,6 +62,12 @@ public class StockMenu {
             case "MICEXINDEXCF.ME" : button = new Button("MICEX (RUS): " + stock.getQuote().getPrice());
                 break;
             case "^KS11" : button = new Button("KOSPI (Korea): " + stock.getQuote().getPrice());
+                break;
+            case "^GDAXI" : button = new Button("XETRA (GER): " + stock.getQuote().getPrice());
+                break;
+            case "^JKSE" : button = new Button("Jakarta (INDON): " + stock.getQuote().getPrice());
+                break;
+            case "^MERV" : button = new Button("Merval (ARG): " + stock.getQuote().getPrice());
                 break;
             default: button = new Button(stock.getSymbol() + ": " + stock.getQuote().getPrice());
         }

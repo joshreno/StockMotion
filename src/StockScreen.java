@@ -67,6 +67,10 @@ public class StockScreen extends BorderPane{
         }
     }
 
+    /**
+     * Initiates the appropriate indexes and exchanges
+     * @throws IOException
+     */
     public void setExchanges() throws IOException{
         exchangesMenu.addStock("^IXIC");
         exchangesMenu.addStock("^GSPC");
@@ -83,6 +87,11 @@ public class StockScreen extends BorderPane{
         exchangesMenuSecond.addStock("^NZ50");
         exchangesMenuSecond.addStock("^MXX");
         exchangesMenuSecond.addStock("^KS11");
+        //
+        exchangesMenuSecond.addStock("^GDAXI");
+        exchangesMenuSecond.addStock("^JKSE");
+        exchangesMenuSecond.addStock("^MERV");
+
     }
 
     /**
