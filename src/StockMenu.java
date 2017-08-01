@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
@@ -129,6 +130,7 @@ public class StockMenu {
             return vbox;
         }
         vbox = new VBox();
+        vbox.getChildren().addAll(new Label("Stocks: "));
         for (Button button: listOfButtons) {
             button.setOnMousePressed(e -> {
                 for (yahoofinance.Stock stock: listOfStocks) {

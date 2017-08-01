@@ -31,6 +31,7 @@ public class StockScreen extends BorderPane{
      */
     public StockScreen() {
         this.setMinSize(0, 0);
+        this.setStyle("-fx-background-color: #000000;");
         vboxList.getChildren().addAll(stockMenu.getListOfStocks());
         controlBox.getChildren().addAll(controlInformation.getRootNode());
         try {
@@ -87,7 +88,6 @@ public class StockScreen extends BorderPane{
         exchangesMenuSecond.addStock("^NZ50");
         exchangesMenuSecond.addStock("^MXX");
         exchangesMenuSecond.addStock("^KS11");
-        //
         exchangesMenuSecond.addStock("^GDAXI");
         exchangesMenuSecond.addStock("^JKSE");
         exchangesMenuSecond.addStock("^MERV");
