@@ -26,6 +26,9 @@ public class MotionListener extends Listener{
     public void onConnect(Controller controller) {
         setConnectString();
         StockMotion.getStockScreen().getControlInformation().setStatusString(status);
+        controller.enableGesture(Gesture.Type.TYPE_SWIPE);
+        controller.enableGesture(Gesture.Type.TYPE_SCREEN_TAP);
+        controller.enableGesture(Gesture.Type.TYPE_KEY_TAP);
     }
 
     /**
