@@ -36,9 +36,7 @@ public class StockScreen extends BorderPane{
         controlBox.getChildren().addAll(controlInformation.getRootNode());
         try {
             setExchanges();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {}
         hbox.getChildren().addAll(exchangesMenu.getListOfExchanges());
         secondHBox.getChildren().addAll(exchangesMenuSecond.getListOfExchanges());
         borderPane.setTop(hbox);
@@ -118,4 +116,6 @@ public class StockScreen extends BorderPane{
     public static StockMenu getStockMenu() {
         return stockMenu;
     }
+
+
 }

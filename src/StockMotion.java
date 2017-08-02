@@ -31,6 +31,7 @@ public class StockMotion extends Application{
     public void start(Stage primaryStage) {
         controller = new Controller();
         listener = new MotionListener();
+        controller.addListener(listener);
         stockScreen = new StockScreen();
         stage = primaryStage;
         stage.setWidth(javafx.stage.Screen.getPrimary().getVisualBounds().getWidth());

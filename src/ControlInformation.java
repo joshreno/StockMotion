@@ -1,5 +1,6 @@
 package src;
 
+import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -15,6 +16,7 @@ public class ControlInformation {
     private Button addStock;
     private Button deleteStock;
     private Label status;
+    private String statusString = "";
 
     /**
      * Sets the information for the button, hbox, image, and label
@@ -64,8 +66,6 @@ public class ControlInformation {
      * @param leapStatus
      */
     public void setStatusString(LeapStatus leapStatus) {
-        hbox.getChildren().remove(status);
-        String statusString = "";
         switch(leapStatus) {
             case INITIALIZED: statusString = "Initialized";
                               status.setStyle("-fx-background-color: #eef441;");
@@ -80,7 +80,24 @@ public class ControlInformation {
                          status.setStyle("-fx-background-color: #ff0000;");
                 break;
         }
-        status.setText("Leap Motion Status: " + statusString);
-        hbox.getChildren().add(status);
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                status.setText("Leap Motion Status: " + getStatusString());
+            }
+        });
+    }
+
+    public String getStatusString() {
+        return statusString;
+    }
+
+    /**
+     * Returns the status label
+     * @return Label
+     */
+    public Label getLabel() {
+        return status;
     }
 }
