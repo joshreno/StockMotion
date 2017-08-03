@@ -29,6 +29,7 @@ public class MotionListener extends Listener{
         controller.enableGesture(Gesture.Type.TYPE_SWIPE);
         controller.enableGesture(Gesture.Type.TYPE_SCREEN_TAP);
         controller.enableGesture(Gesture.Type.TYPE_KEY_TAP);
+        controller.enableGesture(Gesture.Type.TYPE_CIRCLE);
     }
 
     /**
