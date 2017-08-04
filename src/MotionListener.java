@@ -54,7 +54,15 @@ public class MotionListener extends Listener{
      * Sets information from Leap Motion Controller
      * @param controller
      */
-    public void onFrame(Controller controller) {}
+    public void onFrame(Controller controller) {
+        Frame frame = new controller.frame();
+        for (Hand hand : frame.hands()) {
+            String handType = hand.isLeft() ? "Left hand" : "Right hand";
+            Vector normal = hand.palmNormal();
+            Vector direction = hand.direction();
+            Arm arm = hand.arm();
+        }
+    }
 
     /**
      * Sets the status of the Controller
