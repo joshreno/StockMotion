@@ -18,6 +18,9 @@ public class ControlInformation {
     private Label status;
     private String statusString = "";
 
+    private String gestureString = "";
+    private Label gestureLabel;
+
     /**
      * Sets the information for the button, hbox, image, and label
      */
@@ -29,7 +32,8 @@ public class ControlInformation {
         deleteStock = new Button("Delete stock", new ImageView(deleteStockImage));
         status = new Label("Leap Motion Status: " + "");
         status.setStyle("-fx-background-color: #FFFFFF;");
-        hbox.getChildren().addAll(addStock, deleteStock, status);
+        gestureLabel = new Label("Gesture: " + "");
+        hbox.getChildren().addAll(addStock, deleteStock, status, gestureLabel);
         if (MotionListener.getStatus() != null) {
             setStatusString(MotionListener.getStatus());
         } else {
@@ -80,7 +84,6 @@ public class ControlInformation {
                          status.setStyle("-fx-background-color: #ff0000;");
                 break;
         }
-
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -89,6 +92,9 @@ public class ControlInformation {
         });
     }
 
+    /**
+    * Return status string
+    */
     public String getStatusString() {
         return statusString;
     }
@@ -99,5 +105,23 @@ public class ControlInformation {
      */
     public Label getLabel() {
         return status;
+    }
+
+    public void setGestureString(Gesture.Type gestureType) {
+        switch (gestureType) {
+            case TYPE_SWIPE : gestureString = "Swipe";
+                break;
+            case TYPE_SCREEN_TAP : gestureString = "Screen Tap";
+                break;
+            case TYPE_KEY_TAP : gestureString = "Key Tap";
+                break;
+            case TYPE_CIRCLE : gestureString = "Circle";
+                break;
+        }
+        gestureLabel = new Label("Gesture: " + gestureString);
+    }
+
+    public Label getGestureLabel() {
+        return gestureLabel;
     }
 }
