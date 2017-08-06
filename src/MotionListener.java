@@ -62,6 +62,27 @@ public class MotionListener extends Listener{
             Vector direction = hand.direction();
             Arm arm = hand.arm();
         }
+
+        GestureList gestures = frame.gestures();
+        for (int i = 0; i < gestures.count(); i++) {
+            Gesture gesture = gestures.get(i);
+            switch (gesture.type()) {
+                case TYPE_CIRCLE:
+                    CircleGesture circle = new CircleGesture(gesture);
+                    break;
+                case TYPE_SWIPE:
+                    SwipeGesture swipe = new SwipeGesture(gesture);
+                    break;
+                case TYPE_SCREEN_TAP:
+                    ScreenTapGesture screenTap = new ScreenTapGesture(gesture);
+                    break;
+                case TYPE_KEY_TAP:
+                    KeyTapGesture keyTap = new KeyTapGesture(gesture);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     /**
