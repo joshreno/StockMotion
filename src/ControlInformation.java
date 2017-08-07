@@ -107,15 +107,43 @@ public class ControlInformation {
         return status;
     }
 
+    /**
+    * Sets the gesture label based on the performed gesture
+    * @param Gesture.Type
+    */
     public void setGestureString(Gesture.Type gestureType) {
         switch (gestureType) {
             case TYPE_SWIPE : gestureString = "Swipe";
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        // action
+                    }
+                });
                 break;
             case TYPE_SCREEN_TAP : gestureString = "Screen Tap";
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        // action
+                    }
+                });
                 break;
             case TYPE_KEY_TAP : gestureString = "Key Tap";
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        // action
+                    }
+                });
                 break;
             case TYPE_CIRCLE : gestureString = "Circle";
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        // action
+                    }
+                });
                 break;
         }
         gestureLabel = new Label("Gesture: " + gestureString);
